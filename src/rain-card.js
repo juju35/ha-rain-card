@@ -1762,6 +1762,21 @@ class RainCard extends HTMLElement {
     return t(this._hass, this._config, key, vars);
   }
 
+  // `colors:` overrides the per-intensity bar colors (level 1 light, 2 moderate, 3 heavy; `crit` tints the alert state).
+  // Each value is a CSS color (hex, rgb(), var(), a named color…); values with CSS-breaking characters are ignored.
+  _colorVars() {
+    const c = this._config.colors;
+    if (!c || typeof c !== "object") return "";
+    const map = { light: "--rc-light", moderate: "--rc-moderate", heavy: "--rc-heavy", crit: "--rc-crit" };
+    const safe = (v) => (typeof v === "string" && v.length > 0 && v.length < 64 && !/[;{}<>]/.test(v) ? v.trim() : null);
+    const decls = [];
+    for (const [key, name] of Object.entries(map)) {
+      const v = safe(c[key]);
+      if (v) decls.push(`${name}: ${v};`);
+    }
+    return decls.length ? `<style>:host{${decls.join("")}}</style>` : "";
+  }
+
   _locale() {
     return intlLocale(this._hass, this._config);
   }
@@ -1950,7 +1965,7 @@ class RainCard extends HTMLElement {
       c.show_ribbon === false
         ? ""
         : `${this._ribbon(v, true)}<div class="axis" aria-hidden="true"><span>${esc(this._t("axis_now"))}</span><span>${esc(this._t("axis_30"))}</span><span>${esc(this._t("axis_60"))}</span></div>`;
-    return `<style>${BASE_STYLE}${FULL_STYLE}</style>
+    return `<style>${BASE_STYLE}${FULL_STYLE}</style>${this._colorVars()}
       <ha-card>
         ${this._header(v, id, locationOf(this._hass, c, id))}
         <div class="content">
@@ -2027,7 +2042,7 @@ class RainMiniCard extends RainCard {
     const { id, error } = findSource(this._hass, this._config);
     if (error) return this._errorCard(error);
     const v = this._view(id);
-    return `<style>${BASE_STYLE}${MINI_STYLE}</style>
+    return `<style>${BASE_STYLE}${MINI_STYLE}</style>${this._colorVars()}
       <ha-card>
         ${this._header(v, id, "")}
         <div class="content">${this._miniLine(v)}${this._config.show_ribbon === false ? "" : this._ribbon(v, false)}</div>

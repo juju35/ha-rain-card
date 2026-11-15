@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0 - 2026-11-15
+
+### Features
+- **Custom bar colors** (`colors:`): override the ribbon bar colors by intensity — `light` (level 1), `moderate` (level 2), `heavy` (level 3) and/or `crit` (the alert tint), each a CSS color. Omitted levels keep the default blue shades ([#2](https://github.com/juju35/ha-rain-card/issues/2), suggested by @thomasfav28).
+
 ## 1.0.0 - 2026-11-14
 
 ### Features
