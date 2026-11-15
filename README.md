@@ -140,6 +140,17 @@ zoom: true
 | `show_source` | both | `true` | Show the source and the time of the forecast under the ribbon (full card) |
 | `zoom` | mini | `true` | Detail button at the top right of the mini card: it shows the full card (with the same options, so `show_source` or `location` can be set on the mini card too, in YAML or in its visual editor) and switches back; a click outside the card also brings the compact view back. `false` removes the button |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `it`, `nl`, `pt`, `pl`, `sr`, `sr-Latn`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
+| `colors` | both | — | Override the ribbon bar colors by intensity. An object with `light` (level 1), `moderate` (level 2), `heavy` (level 3) and/or `crit` (the alert tint). Each value is a CSS color (hex, `rgb(…)`, `var(…)`, a named color). Omitted levels keep the default blue shades |
+
+### Custom bar colors
+
+```yaml
+type: custom:rain-card
+colors:
+  light: "#fdd835"    # weak rain → yellow
+  moderate: "#fb8c00" # moderate → orange
+  heavy: "#e53935"    # heavy rain → red
+```
 
 ## Screenshots
 
