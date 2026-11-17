@@ -1628,7 +1628,7 @@ const BASE_STYLE = `
           --rc-rain: #1e88e5; --rc-stop: #00acc1;
           /* Shades of the bars, the same in light and dark themes: pale for light rain, deep for heavy rain. */
           --rc-light: #90caf9; --rc-moderate: #42a5f5; --rc-heavy: #1976d2; --rc-crit: var(--error-color, #db4437); --rc-idle: var(--disabled-text-color, #9e9e9e); }
-  ha-card { overflow: hidden; container-type: inline-size; }
+  ha-card { overflow: hidden; container: rc-card / inline-size; }
   /* A size container has no width of its own: this zero-height grid gives the card a natural width without a minimum. */
   :host { display: block; min-width: 0; --rc-natural-width: 360px; }
   :host::before { content: ""; display: grid; grid-template-columns: minmax(0, var(--rc-natural-width)); height: 0; }
@@ -1697,7 +1697,7 @@ const BASE_STYLE = `
                 background: color-mix(in srgb, var(--primary-text-color) 30%, transparent); animation: rc-halo 3s ease-out infinite; }
   @keyframes rc-halo { 0% { transform: scale(.4); opacity: .9; } 60%, 100% { transform: scale(1.4); opacity: 0; } }
   /* Narrow card: the pill keeps only its colored dot (its text stays in title and aria-label). */
-  @container (max-width: 230px) {
+  @container rc-card (max-width: 230px) {
     .chip { padding: 4px; flex: none; }
     .chip-text { display: none; }
     .header { gap: 6px; }
@@ -1717,7 +1717,7 @@ const FULL_STYLE = `
   .axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--secondary-text-color); margin-top: -4px; }
   .source { font-size: 11px; color: var(--secondary-text-color); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .source.stale { color: color-mix(in srgb, var(--rc-soon) 50%, var(--primary-text-color)); }
-  @container (max-width: 260px) {
+  @container rc-card (max-width: 260px) {
     .big { font-size: 18px; }
     .ribbon { height: 44px; }
     .bars { gap: 2px; }
@@ -1736,7 +1736,7 @@ const MINI_STYLE = `
   .now { top: -2px; bottom: -2px; }
   .now::before { top: -2px; left: -1.5px; width: 5px; height: 5px; }
   .now::after { display: none; }
-  @container (max-width: 220px) {
+  @container rc-card (max-width: 220px) {
     .content { flex-direction: column; align-items: stretch; gap: 6px; }
     .ribbon { flex-basis: 20px; }
   }
@@ -1814,8 +1814,29 @@ const BANNER_STYLE = `
   .banner .type-icon svg { fill: color-mix(in srgb, var(--rc-tint) 85%, #0d2a45); }
   .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
   .banner.night .type-icon svg { fill: color-mix(in srgb, var(--rc-tint) 70%, #fff); }
-  .banner .zoom { position: absolute; z-index: 2; top: 6px; right: 6px; margin: 0; color: var(--rc-sky-text); background: rgba(255,255,255,.55); border-color: rgba(13,42,69,.12); }
-  .banner.night .zoom { background: rgba(10,20,40,.45); border-color: rgba(255,255,255,.14); }
+  /* The mini card's detail button: 24 px frosted round in the banner's top right corner. */
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; border: 0; color: #33506b;
+                  background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner .zoom .icon { width: 16px; height: 16px; }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner.night .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
+  /* The status pill right after the title (the title ellipsised first, never under 5 characters), centred on it. */
+  .htext { container: rc-head / inline-size; }
+  .htext .titles { flex: 1 1 auto; display: flex; flex-direction: column; }
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow .name { flex: 0 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .banner .chip { flex: none; max-width: calc(100% - 5ch - 8px); line-height: 16px;
+                  background: color-mix(in srgb, var(--c, var(--rc-accent)) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 45%, #0d2a45); }
+  .banner.night .chip { background: color-mix(in srgb, var(--c, var(--rc-accent)) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 35%, #ffffff); }
+  .banner .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* Not enough room beside the title: the pill on its own line under the subtitle, its label whole over the sky. */
+  @container rc-head (max-width: 150px) {
+    .htext .titles { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; }
+    .trow { display: contents; } .trow .name { max-width: 100%; }
+    .htext .titles > .sub { justify-self: stretch; }
+    .banner .chip { order: 9; max-width: none; margin-top: 2px; }
+  }
   .rc-night, .night .rc-day { display: none; }
   .night .rc-night { display: inline; }
   .rc-star { fill: #fff; opacity: .8; } .rc-star.tw { animation: rc-twinkle 3.2s ease-in-out infinite alternate; }
@@ -1838,9 +1859,9 @@ const BANNER_STYLE = `
   @keyframes rc-puddle { 50% { transform: scaleX(1.12); } }
   @keyframes rc-twinkle { from { opacity: .35; } to { opacity: 1; } }
   /* Narrow card: a smaller picture leaves room for the title; very narrow: the sky and the lawn alone. */
-  @container (max-width: 300px) { .banner { --rc-scene-w: 42%; } }
+  @container rc-card (max-width: 300px) { .banner { --rc-scene-w: 42%; } }
   /* Very narrow card: no room for the picture beside the text, the sky and the lawn stay. */
-  @container (max-width: 220px) { .rc-scene { display: none; } .htext { right: 36px; } }
+  @container rc-card (max-width: 220px) { .rc-scene { display: none; } .htext { right: 36px; } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -2145,7 +2166,7 @@ class RainCard extends HTMLElement {
       <div class="banner${isNight(this._hass, c) ? " night" : ""}">
         ${rainSceneSvg(SCENE_KIND[v.an.state], v.an.level, this._uid)}
         <div class="rc-ground"></div>
-        <div class="htext">${this._badge(v)}<div class="titles">${name}${subtitle}</div></div>
+        <div class="htext">${this._badge(v)}<div class="titles"><div class="trow">${name}${this._chip(v, id)}</div>${subtitle}</div></div>
         ${this._zoomButton()}
       </div>`;
     }
@@ -2212,7 +2233,7 @@ class RainCard extends HTMLElement {
       <ha-card>
         ${this._header(v, id, locationOf(this._hass, c, id))}
         <div class="content">
-          ${this._illustrated() ? `<div class="lead">${this._chip(v, id)}${headline}</div>` : headline}
+          ${headline}
           ${ribbon}
           ${c.show_source === false ? "" : this._sourceLine(v, id)}
         </div>
@@ -2285,10 +2306,10 @@ class RainMiniCard extends RainCard {
     const { id, error } = findSource(this._hass, this._config);
     if (error) return this._errorCard(error);
     const v = this._view(id);
-    // On the banner's sky, the pill's text stands under the title.
+    // On the banner, the pill stands on the title's row: no subtitle repeating it.
     return `<style>${BASE_STYLE}${MINI_STYLE}${this._bannerStyle()}</style>${this._colorVars()}
       <ha-card>
-        ${this._header(v, id, this._illustrated() ? v.pill : "")}
+        ${this._header(v, id, "")}
         <div class="content">${this._miniLine(v)}${this._config.show_ribbon === false ? "" : this._ribbon(v, false)}</div>
       </ha-card>`;
   }

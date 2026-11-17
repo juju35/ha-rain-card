@@ -188,7 +188,7 @@ test("the location is the option, the Météo-France city, the weather entity's 
 test("rain soon: pill, headline, intensity and end time, the ribbon of 12 bars", () => {
   const card = newCard();
   const t = text(card);
-  assert.match(t, /Rain Lyon In 13 min/);
+  assert.match(t, /Rain In 13 min Lyon Rain at 14:35/);
   assert.match(t, /Rain at 14:35 Moderate · until 15:00/);
   assert.match(t, /Now \+30 min \+60 min/);
   assert.match(t, /Météo-France · updated 14:20/);
@@ -209,11 +209,11 @@ test("rain soon: pill, headline, intensity and end time, the ribbon of 12 bars",
 
 test("dry, raining, stopping, stale and unavailable", () => {
   const cases = [
-    [dry, /Dry Dry for the next hour No rain expected before 15:20/],
-    [raining, /Raining Raining until about 15:20 Heavy · all through the next hour/],
-    [stopping, /Stops in 23 min Rain stops at 14:45 Heavy · dry from 14:45/],
-    [stale, /Outdated Forecast out of date Last forecast at 12:20/],
-    [{ [MF]: { state: "unavailable", attributes: {} } }, /Unavailable Forecast unavailable The forecast entity is unavailable/],
+    [dry, /Rain Dry Lyon Dry for the next hour No rain expected before 15:20/],
+    [raining, /Rain Raining Lyon Raining until about 15:20 Heavy · all through the next hour/],
+    [stopping, /Rain Stops in 23 min Lyon Rain stops at 14:45 Heavy · dry from 14:45/],
+    [stale, /Rain Outdated Lyon Forecast out of date Last forecast at 12:20/],
+    [{ [MF]: { state: "unavailable", attributes: {} } }, /Rain Unavailable Lyon Forecast unavailable The forecast entity is unavailable/],
   ];
   for (const [o, re] of cases) assert.match(text(newCard({}, makeHass(o))), re);
   const rainingHtml = html(newCard({}, makeHass(raining)));
@@ -234,14 +234,14 @@ test("only the next rain time: dry until then, rain from then on", () => {
 
 test("options hide the title, location, details, ribbon and source line", () => {
   const card = newCard({ name: "Garden", location: "Back yard" });
-  assert.match(text(card), /^Garden Back yard/);
+  assert.match(text(card), /^Garden In 13 min Back yard/);
   const bare = newCard({ show_title: false, show_subtitle: false, show_details: false, show_ribbon: false, show_source: false });
   const t = text(bare);
   assert.equal(t, "In 13 min Rain at 14:35");
 });
 
 test("the language option and Home Assistant's language translate the card", () => {
-  assert.match(text(newCard({ language: "fr" })), /Pluie Lyon Dans 13 min Pluie à 14:35 Modérée · jusqu'à 15:00/);
+  assert.match(text(newCard({ language: "fr" })), /Pluie Dans 13 min Lyon Pluie à 14:35 Modérée · jusqu'à 15:00/);
   assert.match(text(newCard({}, makeHass({}, { language: "de", locale: { language: "de", time_format: "24", time_zone: "server" } }))), /Regen um 14:35/);
   // 12-hour clock from the profile.
   assert.match(text(newCard({}, makeHass({}, { locale: { language: "en", time_format: "12", time_zone: "server" } }))), /Rain at 02:35\sPM/);
@@ -269,10 +269,10 @@ test("a weather entity: hourly forecast fetched with weather.get_forecasts, then
     { ...hass.ws[0], target: { ...hass.ws[0].target }, service_data: { ...hass.ws[0].service_data } },
     { type: "call_service", domain: "weather", service: "get_forecasts", service_data: { type: "hourly" }, target: { entity_id: WX }, return_response: true },
   );
-  assert.match(text(card), /No data No forecast right now/);
+  assert.match(text(card), /Rain No data Home No forecast right now/);
   await flush();
   const t = text(card);
-  assert.match(t, /Rain Home In 38 min Rain at 15:00 Moderate · until at least 15:20/);
+  assert.match(t, /Rain In 38 min Home Rain at 15:00 Moderate · until at least 15:20/);
   assert.match(t, /Met\.no · updated 14:22 · hourly forecast/);
   // Not fetched again on the next hass until the entity changes or 15 minutes went by.
   card.hass = makeHass();
@@ -391,9 +391,11 @@ test("illustrated banner: picture of the state, night by sun or theme, classic h
   const classic = scene({}, { illustration: false }).h;
   assert.doesNotMatch(classic, /class="banner/);
   assert.match(classic, /class="header"/);
-  // Mini card: the same banner, the pill's text under the title.
+  // The pill on the banner's title row, in the colour of the icon; the mini card: the same banner, no subtitle repeating it.
+  assert.match(scene(raining).h, /<div class="trow"><div class="name">Rain<\/div><span class="chip clickable rain"[^>]*title="Raining"/);
   const mini = html(newCard({}, makeHass(raining), rc.RainMiniCard));
-  assert.match(mini, /class="banner"[\s\S]*rc-scene rain[\s\S]*<div class="sub">Raining<\/div>/);
+  assert.match(mini, /class="banner"[\s\S]*rc-scene rain[\s\S]*<div class="trow"><div class="name">Rain<\/div><span class="chip clickable rain"/);
+  assert.doesNotMatch(mini, /<div class="sub">/);
 });
 
 test("both cards are registered for the card picker", () => {
