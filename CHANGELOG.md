@@ -3,9 +3,12 @@
 ## 1.2.0 - 2026-11-17
 
 ### Features
-- **Illustrated header** on the full and mini cards: a 90 px sky banner with a scene of the next hour on a 10 px lawn strip — the sun and white clouds when dry, grey clouds coming in and a walker opening an umbrella when rain is near, rain falling into a puddle while it rains (more drops for heavier rain), plain clouds when the forecast is out of date or unknown. Night version (stars, moon) following `sun.sun`, else the dark theme; `illustration_theme: day | night` forces it, `illustration: false` keeps the classic header. Animations honour `prefers-reduced-motion`.
+- **Illustrated header** on the full and mini cards: a 90 px sky banner with a scene of the next hour on a 10 px lawn strip — the sun and white clouds when dry, grey clouds coming in and a walker opening an umbrella when rain is near, rain falling into a puddle while it rains (more drops for heavier rain), plain clouds when the forecast is out of date or unknown. Night version (stars, moon) after sunset (`sun.sun`) or with the dark theme; `illustration_theme: day | night` forces it, `illustration: false` keeps the classic header. Animations honour `prefers-reduced-motion`.
 - The badge's cloud now takes the colour of the state (dry, rain soon, raining, stopping, out of date, unavailable); the status pill sits on the banner's title row right after the title, in the same colour (full and mini card), moving under the subtitle when the banner is narrow and keeping only its dot on a very narrow card. The mini card's detail button is a 24 px frosted round in the banner's top right corner.
 - New options in both visual editors (`illustration`, `illustration_theme`), translated into the 22 languages.
+
+### Fixes
+- Night picture with the dark theme even while the sun is up (`illustration_theme: auto`): the header is night when `sun.sun` is below the horizon or Home Assistant's theme is dark; `day` / `night` still force it.
 
 ## 1.1.0 - 2026-11-15
 

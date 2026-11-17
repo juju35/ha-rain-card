@@ -377,10 +377,12 @@ test("illustrated banner: picture of the state, night by sun or theme, classic h
   assert.equal(scene(stale).kind, "idle");
   assert.match(scene(raining).h, /class="rc-drop r0"/);
   assert.match(scene().h, /class="rc-ground"/);
-  // Night: the sun below the horizon, else the dark theme; illustration_theme forces either.
+  // Night: the sun below the horizon or the dark theme (even with the sun up); illustration_theme forces either.
   assert.equal(scene().night, false);
   assert.equal(scene({}, {}, { themes: { darkMode: true } }).night, true);
-  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, {}, { themes: { darkMode: true } }).night, false);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, {}, { themes: { darkMode: true } }).night, true);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, {}, { themes: { darkMode: false } }).night, false);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, { illustration_theme: "day" }, { themes: { darkMode: true } }).night, false);
   assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "below_horizon", attributes: {} } }).night, true);
   assert.equal(scene({}, { illustration_theme: "night" }).night, true);
   assert.equal(scene({}, { illustration_theme: "day" }, { themes: { darkMode: true } }).night, false);

@@ -29,7 +29,7 @@ The cards read the minute-by-minute rain forecast of [Météo-France](https://ww
 
 - Two cards: a full **Rain Card** (`custom:rain-card`) and a compact **Rain Mini Card** (`custom:rain-mini-card`)
 - Headline for each state of the next hour: **Dry for the next hour**, **Rain at 14:35**, **Raining until about 15:20**, **Rain stops at 14:50**, with the intensity (**Light**, **Moderate**, **Heavy**) and the end time underneath
-- **Illustrated header**: a 90 px sky banner (full and mini card) with a scene of the next hour on a lawn strip — sun and white clouds when dry, grey clouds coming in and a walker opening an umbrella when rain is near, rain falling into a puddle while it rains; a starry night version follows `sun.sun` (or the dark theme), `illustration_theme` forces day or night, `illustration: false` brings back the classic header
+- **Illustrated header**: a 90 px sky banner (full and mini card) with a scene of the next hour on a lawn strip — sun and white clouds when dry, grey clouds coming in and a walker opening an umbrella when rain is near, rain falling into a puddle while it rains; a starry night version after sunset (`sun.sun`) or with the dark theme, even with the sun up, `illustration_theme` forces day or night, `illustration: false` brings back the classic header
 - The badge's cloud takes the colour of the state: green when dry, amber when rain is near, blue while it rains, cyan when it stops, grey when out of date or unknown, red when unavailable
 - Status pill: **Dry**, **In 15 min**, **Raining**, **Stops in 10 min** (and **Outdated**, **No data**, **Unavailable**), at the right of the headline (of the header with `illustration: false`)
 - The **60-minute ribbon**: twelve 5-minute bars, taller and deeper blue as the rain gets heavier, a thin neutral bar when dry; the Météo-France 10-minute steps of the second half hour are spread over two bars each; axis labels Now / +30 / +60 min; a "now" marker moving along the ribbon as the minutes go by, the bars already past faded
@@ -138,7 +138,7 @@ zoom: true
 | `name` | both | `Rain` | Card title |
 | `location` | both | From the forecast | Subtitle: the Météo-France city, else the weather entity's name, else the location name of Home Assistant (full card) |
 | `illustration` | both | `true` | Illustrated header: the sky banner with the scene of the next hour. `false` shows the classic header (icon, title and pill) |
-| `illustration_theme` | both | `auto` | `auto` (night when `sun.sun` is below the horizon, else with Home Assistant's dark theme), `day` or `night` |
+| `illustration_theme` | both | `auto` | `auto` (night when `sun.sun` is below the horizon or with Home Assistant's dark theme, even with the sun up), `day` or `night` |
 | `show_title` | both | `true` | Show the title in the header |
 | `show_subtitle` | both | `true` | Show the location under the title (full card; on the illustrated mini card, the pill's text) |
 | `show_details` | both | `true` | Show the intensity and end time under the headline (the intensity after the line on the mini card) |
