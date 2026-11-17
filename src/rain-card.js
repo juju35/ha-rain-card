@@ -1415,6 +1415,13 @@ const intlLocale = (hass, config) => {
 const t = (hass, config, key, vars = {}) =>
   String(STRINGS[lang(hass, config)][key] ?? STRINGS.en[key] ?? key).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
 
+// The whole width of an element's text in its own font, an ellipsised one included.
+const textWidth = (el) => {
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  return range.getBoundingClientRect().width;
+};
+
 const svgIcon = (path, cls = "") => `<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
 
 const TIME_FMT = {};
@@ -1644,9 +1651,21 @@ const BASE_STYLE = `
           flex: 0 1 auto; min-width: 0; max-width: 50%; overflow: hidden; box-sizing: border-box; transition: background-color .3s ease, color .3s ease; }
   .chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 0; }
-  /* With a subtitle, the pill stays on the title's line (16 px × 1.25 + 12 px subtitle line, centered: 14.4 px up). */
-  .header:has(.sub) > .chip { margin-bottom: 14.4px; }
   .titles { flex: 1 1 0; min-width: 5ch; }
+  /* The status pill right after the title, centred on it, while the title stays whole and the pill's whole label fits
+     beside it; otherwise (measured by the card, see _fitPill) the pill on its own line under a one-line subtitle, and
+     if even that would not fit in the header, its dot alone (the label stays in title and aria-label). */
+  .titles { display: flex; flex-direction: column; }
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow .name { flex: 0 1 auto; min-width: 0; }
+  .trow .chip { flex: none; max-width: none; }
+  .titles.below { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; }
+  .titles.below .trow { display: contents; }
+  .titles.below .name { max-width: 100%; }
+  .titles.below > .sub { justify-self: stretch; }
+  .titles.below .chip { grid-row: 3; margin-top: 2px; max-width: 100%; }
+  .titles.pill-dot .chip { padding: 4px; }
+  .titles.pill-dot .chip-text { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sub { font-size: 12px; color: var(--secondary-text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .type-icon { position: relative; display: flex; flex: none; width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center;
@@ -1697,7 +1716,7 @@ const BASE_STYLE = `
                 background: color-mix(in srgb, var(--primary-text-color) 30%, transparent); animation: rc-halo 3s ease-out infinite; }
   @keyframes rc-halo { 0% { transform: scale(.4); opacity: .9; } 60%, 100% { transform: scale(1.4); opacity: 0; } }
   /* Narrow card: the pill keeps only its colored dot (its text stays in title and aria-label). */
-  @container rc-card (max-width: 230px) {
+  @container rc-card (max-width: 200px) {
     .chip { padding: 4px; flex: none; }
     .chip-text { display: none; }
     .header { gap: 6px; }
@@ -1822,22 +1841,12 @@ const BANNER_STYLE = `
   .banner .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
   .banner.night .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
   .banner.night .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
-  /* The status pill right after the title (the title ellipsised first, never under 5 characters), centred on it. */
-  .htext { container: rc-head / inline-size; }
-  .htext .titles { flex: 1 1 auto; display: flex; flex-direction: column; }
-  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
-  .trow .name { flex: 0 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .banner .chip { flex: none; max-width: calc(100% - 56px); line-height: 16px;
+  /* The status pill on the title's row or under the subtitle: see .trow in BASE_STYLE and _fitPill. */
+  .htext .titles { flex: 1 1 auto; }
+  .banner .chip { line-height: 16px;
                   background: color-mix(in srgb, var(--c, var(--rc-accent)) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 45%, #0d2a45); }
   .banner.night .chip { background: color-mix(in srgb, var(--c, var(--rc-accent)) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 35%, #ffffff); }
   .banner .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  /* Not enough room beside the title: the pill on its own line under the subtitle, its label whole over the sky. */
-  @container rc-head (max-width: 150px) {
-    .htext .titles { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; }
-    .trow { display: contents; } .trow .name { max-width: 100%; }
-    .htext .titles > .sub { justify-self: stretch; }
-    .banner .chip { order: 9; max-width: none; margin-top: 2px; }
-  }
   .rc-night, .night .rc-day { display: none; }
   .night .rc-night { display: inline; }
   .rc-star { fill: #fff; opacity: .8; } .rc-star.tw { animation: rc-twinkle 3.2s ease-in-out infinite alternate; }
@@ -1976,6 +1985,18 @@ class RainCard extends HTMLElement {
 
   connectedCallback() {
     if (this._hass && this._config) this._update();
+    // A new width (or the web font loaded): the status pill is fitted again, in the next frame.
+    if (typeof ResizeObserver === "function") {
+      this._resize ??= new ResizeObserver((entries) => {
+        const w = Math.round(entries.at(-1).contentRect.width);
+        if (w === this._fitWidth) return;
+        this._fitWidth = w;
+        cancelAnimationFrame(this._fitFrame);
+        this._fitFrame = requestAnimationFrame(() => this._fitPill());
+      });
+      this._resize.observe(this);
+    }
+    document.fonts?.ready?.then(() => this._fitPill());
     // The now marker and the minutes left move on their own: redrawn every minute while the card is on the page.
     clearInterval(this._tick);
     this._tick = setInterval(() => {
@@ -1987,6 +2008,8 @@ class RainCard extends HTMLElement {
   disconnectedCallback() {
     clearInterval(this._tick);
     this._tick = null;
+    this._resize?.disconnect();
+    this._fitWidth = null;
   }
 
   setConfig(config) {
@@ -2032,7 +2055,33 @@ class RainCard extends HTMLElement {
       this._html = html;
       morph(this.shadowRoot, html);
     }
+    this._fitPill();
     this._syncWeather();
+  }
+
+  // The status pill stays right after the title only while the whole title and the pill's whole label fit on that
+  // row; otherwise it takes a line of its own under the subtitle (.below), and when even then the title, the subtitle
+  // and the pill would not fit above the banner's lawn strip, it keeps its dot alone (.pill-dot). Measured in the
+  // real fonts, so that every language and title length gets its own answer.
+  _fitPill() {
+    for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
+      const row = t.querySelector(":scope > .trow");
+      const chip = row?.querySelector(":scope > .chip");
+      if (!chip?.getBoundingClientRect) continue;
+      t.classList.remove("below", "pill-dot");
+      const name = row.querySelector(":scope > .name");
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const title = name ? textWidth(name) + gap : 0;
+      const pill = chip.getBoundingClientRect().width;
+      if (title + pill <= row.getBoundingClientRect().width + 0.5) continue;
+      t.classList.add("below");
+      const r = t.getBoundingClientRect();
+      const banner = t.closest(".banner");
+      const box = banner?.getBoundingClientRect();
+      const floor = banner?.querySelector(".rc-ground")?.getBoundingClientRect().top ?? box?.bottom;
+      const tall = box && (r.bottom > floor + 0.5 || r.top < box.top - 0.5);
+      if (tall || pill > r.width + 0.5) t.classList.add("pill-dot");
+    }
   }
 
   _onClick(ev) {
@@ -2161,7 +2210,7 @@ class RainCard extends HTMLElement {
   _header(v, id, sub) {
     const c = this._config;
     const name = c.show_title === false ? "" : `<div class="name">${esc(c.name || this._t("title"))}</div>`;
-    const subtitle = c.show_subtitle === false || !sub ? "" : `<div class="sub">${esc(sub)}</div>`;
+    const subtitle = c.show_subtitle === false || !sub ? "" : `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>`;
     if (this._illustrated()) {
       return `
       <div class="banner${isNight(this._hass, c) ? " night" : ""}">
@@ -2174,8 +2223,7 @@ class RainCard extends HTMLElement {
     return `
       <div class="header">
         ${this._badge(v)}
-        <div class="titles">${name}${subtitle}</div>
-        ${this._chip(v, id)}
+        <div class="titles"><div class="trow">${name}${this._chip(v, id)}</div>${subtitle}</div>
         ${this._zoomButton()}
       </div>`;
   }
