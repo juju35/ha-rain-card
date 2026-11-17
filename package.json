@@ -1,6 +1,6 @@
 {
   "name": "ha-rain-card",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lovelace cards for Home Assistant showing rain in the next hour: Météo-France minute-by-minute rain forecast, or any weather entity's hourly precipitation.",
   "private": true,
   "type": "module",
