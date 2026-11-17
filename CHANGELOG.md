@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 - 2026-11-17
+
+### Features
+- **Illustrated header** on the full and mini cards: a 90 px sky banner with a scene of the next hour on a 10 px lawn strip — the sun and white clouds when dry, grey clouds coming in and a walker opening an umbrella when rain is near, rain falling into a puddle while it rains (more drops for heavier rain), plain clouds when the forecast is out of date or unknown. Night version (stars, moon) following `sun.sun`, else the dark theme; `illustration_theme: day | night` forces it, `illustration: false` keeps the classic header. Animations honour `prefers-reduced-motion`.
+- The badge's cloud now takes the colour of the state (dry, rain soon, raining, stopping, out of date, unavailable); the pill moves to the right of the headline under the banner, and the mini card shows the pill's text under its title.
+- New options in both visual editors (`illustration`, `illustration_theme`), translated into the 22 languages.
+
 ## 1.1.0 - 2026-11-15
 
 ### Features

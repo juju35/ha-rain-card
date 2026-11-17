@@ -198,10 +198,10 @@ test("rain soon: pill, headline, intensity and end time, the ribbon of 12 bars",
     bars.map((b) => b.match(/l([0-3n])/)[1]),
     ["0", "0", "0", "1", "2", "2", "1", "1", "0", "0", "0", "0"],
   );
-  // The coming shower glows, no drops yet; the badge keeps its accent (no state class) and its drops do not fall.
+  // The coming shower glows, no drops yet; the badge takes the state's colour and its drops do not fall.
   assert.equal((html(card).match(/ next"/g) || []).length, 5);
   assert.doesNotMatch(html(card), /class="drip"/);
-  assert.match(html(card), /class="type-icon"/);
+  assert.match(html(card), /class="type-icon soon"/);
   assert.match(html(card), /class="chip clickable soon"/);
   // The now marker, 2 minutes into the first bar.
   assert.match(html(card), /class="now" style="left:3\.33%"/);
@@ -217,7 +217,7 @@ test("dry, raining, stopping, stale and unavailable", () => {
   ];
   for (const [o, re] of cases) assert.match(text(newCard({}, makeHass(o))), re);
   const rainingHtml = html(newCard({}, makeHass(raining)));
-  assert.match(rainingHtml, /type-icon falling/);
+  assert.match(rainingHtml, /type-icon rain falling/);
   assert.equal((rainingHtml.match(/class="drip"/g) || []).length, 12);
   // Stale: no now marker, the bars greyed.
   const staleHtml = html(newCard({}, makeHass(stale)));
@@ -354,15 +354,46 @@ test("editors: the YAML keeps only what differs from the defaults; the mini edit
   });
   const full = rc.RainCardEditor.toggles.map(([n]) => n);
   const mini = rc.RainMiniCardEditor.toggles.map(([n]) => n);
-  assert.deepEqual([...full], ["show_title", "show_subtitle", "show_details", "show_ribbon", "show_source"]);
+  assert.deepEqual([...full], ["illustration", "show_title", "show_subtitle", "show_details", "show_ribbon", "show_source"]);
   assert.deepEqual([...mini], [...full, "zoom"]);
   const ed = new rc.RainMiniCardEditor();
   ed.setConfig({ type: "custom:rain-mini-card" });
   ed.hass = makeHass();
   const names = JSON.stringify(ed._form.schema);
-  for (const n of ["entity", "name", "location", "language", ...mini]) assert.ok(names.includes(`"${n}"`), n);
+  for (const n of ["entity", "name", "location", "language", "illustration_theme", ...mini]) assert.ok(names.includes(`"${n}"`), n);
   assert.equal(ed._form.data.zoom, true);
   assert.equal(ed._form.computeLabel({ name: "show_ribbon" }), "Show the 60-minute ribbon");
+});
+
+test("illustrated banner: picture of the state, night by sun or theme, classic header when turned off", () => {
+  const scene = (o, config = {}, extra = {}) => {
+    const h = html(newCard(config, { ...makeHass(o), ...extra }));
+    return { h, kind: h.match(/class="rc-scene (\w+)"/)?.[1], night: /class="banner night"/.test(h) };
+  };
+  assert.equal(scene().kind, "soon");
+  assert.equal(scene(dry).kind, "dry");
+  assert.equal(scene(raining).kind, "rain");
+  assert.equal(scene(stopping).kind, "rain");
+  assert.equal(scene(stale).kind, "idle");
+  assert.match(scene(raining).h, /class="rc-drop r0"/);
+  assert.match(scene().h, /class="rc-ground"/);
+  // Night: the sun below the horizon, else the dark theme; illustration_theme forces either.
+  assert.equal(scene().night, false);
+  assert.equal(scene({}, {}, { themes: { darkMode: true } }).night, true);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, {}, { themes: { darkMode: true } }).night, false);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "below_horizon", attributes: {} } }).night, true);
+  assert.equal(scene({}, { illustration_theme: "night" }).night, true);
+  assert.equal(scene({}, { illustration_theme: "day" }, { themes: { darkMode: true } }).night, false);
+  // Each card has its own gradient id.
+  const d = [newCard({}, makeHass(dry)), newCard({}, makeHass(dry))].map((c) => html(c).match(/id="(rc-sun-\d+)"/)[1]);
+  assert.notEqual(d[0], d[1]);
+  // illustration: false keeps the classic header with the pill.
+  const classic = scene({}, { illustration: false }).h;
+  assert.doesNotMatch(classic, /class="banner/);
+  assert.match(classic, /class="header"/);
+  // Mini card: the same banner, the pill's text under the title.
+  const mini = html(newCard({}, makeHass(raining), rc.RainMiniCard));
+  assert.match(mini, /class="banner"[\s\S]*rc-scene rain[\s\S]*<div class="sub">Raining<\/div>/);
 });
 
 test("both cards are registered for the card picker", () => {

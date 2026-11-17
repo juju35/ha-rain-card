@@ -64,6 +64,11 @@ const STRINGS = {
     zoom_helper: "Button at the top right that switches the mini card to the full card and back",
     zoom_in: "Show the full card",
     zoom_out: "Show the compact card",
+    illustration: "Animated illustration",
+    illustration_theme: "Illustration theme",
+    theme_auto: "Automatic (sun)",
+    theme_day: "Day",
+    theme_night: "Night",
   },
   fr: {
     title: "Pluie",
@@ -119,6 +124,11 @@ const STRINGS = {
     zoom_helper: "Bouton en haut à droite qui passe de la mini-carte à la carte complète et inversement",
     zoom_in: "Afficher la carte complète",
     zoom_out: "Afficher la carte compacte",
+    illustration: "Illustration animée",
+    illustration_theme: "Thème de l’illustration",
+    theme_auto: "Automatique (soleil)",
+    theme_day: "Jour",
+    theme_night: "Nuit",
   },
   de: {
     title: "Regen",
@@ -174,6 +184,11 @@ const STRINGS = {
     zoom_helper: "Schaltfläche oben rechts, die von der Mini-Karte zur vollständigen Karte und zurück wechselt",
     zoom_in: "Vollständige Karte anzeigen",
     zoom_out: "Kompakte Karte anzeigen",
+    illustration: "Animierte Illustration",
+    illustration_theme: "Thema der Illustration",
+    theme_auto: "Automatisch (Sonne)",
+    theme_day: "Tag",
+    theme_night: "Nacht",
   },
   es: {
     title: "Lluvia",
@@ -229,6 +244,11 @@ const STRINGS = {
     zoom_helper: "Botón arriba a la derecha que cambia de la minitarjeta a la tarjeta completa y viceversa",
     zoom_in: "Mostrar la tarjeta completa",
     zoom_out: "Mostrar la tarjeta compacta",
+    illustration: "Ilustración animada",
+    illustration_theme: "Tema de la ilustración",
+    theme_auto: "Automático (sol)",
+    theme_day: "Día",
+    theme_night: "Noche",
   },
   it: {
     title: "Pioggia",
@@ -284,6 +304,11 @@ const STRINGS = {
     zoom_helper: "Pulsante in alto a destra che passa dalla mini scheda alla scheda completa e viceversa",
     zoom_in: "Mostra la scheda completa",
     zoom_out: "Mostra la scheda compatta",
+    illustration: "Illustrazione animata",
+    illustration_theme: "Tema dell’illustrazione",
+    theme_auto: "Automatico (sole)",
+    theme_day: "Giorno",
+    theme_night: "Notte",
   },
   nl: {
     title: "Regen",
@@ -339,6 +364,11 @@ const STRINGS = {
     zoom_helper: "Knop rechtsboven die de minikaart naar de volledige kaart omschakelt en terug",
     zoom_in: "Volledige kaart tonen",
     zoom_out: "Compacte kaart tonen",
+    illustration: "Geanimeerde illustratie",
+    illustration_theme: "Thema van de illustratie",
+    theme_auto: "Automatisch (zon)",
+    theme_day: "Dag",
+    theme_night: "Nacht",
   },
   pt: {
     title: "Chuva",
@@ -394,6 +424,11 @@ const STRINGS = {
     zoom_helper: "Botão no canto superior direito que alterna entre o mini cartão e o cartão completo",
     zoom_in: "Mostrar o cartão completo",
     zoom_out: "Mostrar o cartão compacto",
+    illustration: "Ilustração animada",
+    illustration_theme: "Tema da ilustração",
+    theme_auto: "Automático (sol)",
+    theme_day: "Dia",
+    theme_night: "Noite",
   },
   pl: {
     title: "Deszcz",
@@ -449,6 +484,11 @@ const STRINGS = {
     zoom_helper: "Przycisk w prawym górnym rogu przełączający minikartę na pełną kartę i z powrotem",
     zoom_in: "Pokaż pełną kartę",
     zoom_out: "Pokaż kompaktową kartę",
+    illustration: "Animowana ilustracja",
+    illustration_theme: "Motyw ilustracji",
+    theme_auto: "Automatycznie (słońce)",
+    theme_day: "Dzień",
+    theme_night: "Noc",
   },
   sr: {
     title: "Киша",
@@ -504,6 +544,11 @@ const STRINGS = {
     zoom_helper: "Дугме горе десно које пребацује мини картицу на пуну картицу и назад",
     zoom_in: "Прикажи пуну картицу",
     zoom_out: "Прикажи компактну картицу",
+    illustration: "Анимирана илустрација",
+    illustration_theme: "Тема илустрације",
+    theme_auto: "Аутоматски (сунце)",
+    theme_day: "Дан",
+    theme_night: "Ноћ",
   },
   "sr-Latn": {
     title: "Kiša",
@@ -559,6 +604,11 @@ const STRINGS = {
     zoom_helper: "Dugme gore desno koje prebacuje mini karticu na punu karticu i nazad",
     zoom_in: "Prikaži punu karticu",
     zoom_out: "Prikaži kompaktnu karticu",
+    illustration: "Animirana ilustracija",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Automatski (sunce)",
+    theme_day: "Dan",
+    theme_night: "Noć",
   },
   ro: {
     title: "Ploaie",
@@ -614,6 +664,11 @@ const STRINGS = {
     zoom_helper: "Buton din dreapta sus care comută mini cardul în cardul complet și înapoi",
     zoom_in: "Afișează cardul complet",
     zoom_out: "Afișează cardul compact",
+    illustration: "Ilustrație animată",
+    illustration_theme: "Tema ilustrației",
+    theme_auto: "Automat (soare)",
+    theme_day: "Zi",
+    theme_night: "Noapte",
   },
   da: {
     title: "Regn",
@@ -669,6 +724,11 @@ const STRINGS = {
     zoom_helper: "Knap øverst til højre, der skifter minikortet til det fulde kort og tilbage",
     zoom_in: "Vis det fulde kort",
     zoom_out: "Vis det kompakte kort",
+    illustration: "Animeret illustration",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatisk (sol)",
+    theme_day: "Dag",
+    theme_night: "Nat",
   },
   sv: {
     title: "Regn",
@@ -724,6 +784,11 @@ const STRINGS = {
     zoom_helper: "Knapp uppe till höger som växlar minikortet till hela kortet och tillbaka",
     zoom_in: "Visa hela kortet",
     zoom_out: "Visa det kompakta kortet",
+    illustration: "Animerad illustration",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatiskt (sol)",
+    theme_day: "Dag",
+    theme_night: "Natt",
   },
   bg: {
     title: "Дъжд",
@@ -779,6 +844,11 @@ const STRINGS = {
     zoom_helper: "Бутон горе вдясно, който превключва мини картата към пълната карта и обратно",
     zoom_in: "Показване на пълната карта",
     zoom_out: "Показване на компактната карта",
+    illustration: "Анимирана илюстрация",
+    illustration_theme: "Тема на илюстрацията",
+    theme_auto: "Автоматично (слънце)",
+    theme_day: "Ден",
+    theme_night: "Нощ",
   },
   ru: {
     title: "Дождь",
@@ -834,6 +904,11 @@ const STRINGS = {
     zoom_helper: "Кнопка в правом верхнем углу, переключающая мини-карточку на полную карточку и обратно",
     zoom_in: "Показать полную карточку",
     zoom_out: "Показать компактную карточку",
+    illustration: "Анимированная иллюстрация",
+    illustration_theme: "Тема иллюстрации",
+    theme_auto: "Автоматически (солнце)",
+    theme_day: "День",
+    theme_night: "Ночь",
   },
   uk: {
     title: "Дощ",
@@ -889,6 +964,11 @@ const STRINGS = {
     zoom_helper: "Кнопка вгорі праворуч, що перемикає міні-картку на повну картку й назад",
     zoom_in: "Показати повну картку",
     zoom_out: "Показати компактну картку",
+    illustration: "Анімована ілюстрація",
+    illustration_theme: "Тема ілюстрації",
+    theme_auto: "Автоматично (сонце)",
+    theme_day: "День",
+    theme_night: "Ніч",
   },
   hu: {
     title: "Eső",
@@ -944,6 +1024,11 @@ const STRINGS = {
     zoom_helper: "Jobb felső gomb, amely a mini kártyát a teljes kártyára váltja és vissza",
     zoom_in: "Teljes kártya megjelenítése",
     zoom_out: "Kompakt kártya megjelenítése",
+    illustration: "Animált illusztráció",
+    illustration_theme: "Az illusztráció témája",
+    theme_auto: "Automatikus (nap)",
+    theme_day: "Nappal",
+    theme_night: "Éjszaka",
   },
   sk: {
     title: "Dážď",
@@ -999,6 +1084,11 @@ const STRINGS = {
     zoom_helper: "Tlačidlo vpravo hore, ktoré prepína minikartu na celú kartu a späť",
     zoom_in: "Zobraziť celú kartu",
     zoom_out: "Zobraziť kompaktnú kartu",
+    illustration: "Animovaná ilustrácia",
+    illustration_theme: "Téma ilustrácie",
+    theme_auto: "Automaticky (slnko)",
+    theme_day: "Deň",
+    theme_night: "Noc",
   },
   cs: {
     title: "Déšť",
@@ -1054,6 +1144,11 @@ const STRINGS = {
     zoom_helper: "Tlačítko vpravo nahoře, které přepíná minikartu na celou kartu a zpět",
     zoom_in: "Zobrazit celou kartu",
     zoom_out: "Zobrazit kompaktní kartu",
+    illustration: "Animovaná ilustrace",
+    illustration_theme: "Motiv ilustrace",
+    theme_auto: "Automaticky (slunce)",
+    theme_day: "Den",
+    theme_night: "Noc",
   },
   sl: {
     title: "Dež",
@@ -1109,6 +1204,11 @@ const STRINGS = {
     zoom_helper: "Gumb zgoraj desno, ki preklopi mini kartico v polno kartico in nazaj",
     zoom_in: "Prikaži polno kartico",
     zoom_out: "Prikaži kompaktno kartico",
+    illustration: "Animirana ilustracija",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Samodejno (sonce)",
+    theme_day: "Dan",
+    theme_night: "Noč",
   },
   lv: {
     title: "Lietus",
@@ -1164,6 +1264,11 @@ const STRINGS = {
     zoom_helper: "Poga augšējā labajā stūrī, kas pārslēdz mini kartīti uz pilno kartīti un atpakaļ",
     zoom_in: "Rādīt pilno kartīti",
     zoom_out: "Rādīt kompakto kartīti",
+    illustration: "Animēta ilustrācija",
+    illustration_theme: "Ilustrācijas motīvs",
+    theme_auto: "Automātiski (saule)",
+    theme_day: "Diena",
+    theme_night: "Nakts",
   },
   el: {
     title: "Βροχή",
@@ -1219,6 +1324,11 @@ const STRINGS = {
     zoom_helper: "Κουμπί πάνω δεξιά που αλλάζει τη μίνι κάρτα στην πλήρη κάρτα και πίσω",
     zoom_in: "Εμφάνιση της πλήρους κάρτας",
     zoom_out: "Εμφάνιση της συμπαγούς κάρτας",
+    illustration: "Κινούμενη εικονογράφηση",
+    illustration_theme: "Θέμα εικονογράφησης",
+    theme_auto: "Αυτόματα (ήλιος)",
+    theme_day: "Ημέρα",
+    theme_night: "Νύχτα",
   },
 };
 
@@ -1540,7 +1650,7 @@ const BASE_STYLE = `
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sub { font-size: 12px; color: var(--secondary-text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .type-icon { position: relative; display: flex; flex: none; width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center;
-               --rc-tint: var(--rc-accent); background: color-mix(in srgb, var(--rc-tint) 16%, transparent); transition: background-color .3s ease; }
+               --rc-tint: var(--c, var(--rc-accent)); background: color-mix(in srgb, var(--rc-tint) 16%, transparent); transition: background-color .3s ease; }
   .type-icon svg { width: 24px; height: 24px; overflow: visible; fill: color-mix(in srgb, var(--rc-tint) 60%, var(--primary-text-color)); transition: fill .3s ease; }
   .type-icon .drop { opacity: .9; }
   .type-icon.falling .drop { animation: rc-fall 1s linear infinite; }
@@ -1597,6 +1707,10 @@ const BASE_STYLE = `
 const FULL_STYLE = `
   .content { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 10px; }
   .headline { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  /* Under the illustrated banner, the pill sits at the right of the headline. */
+  .lead { display: flex; align-items: flex-start; gap: 8px; }
+  .lead .headline { flex: 1 1 auto; }
+  .lead .chip { order: 2; margin-top: 4px; }
   .big { font-size: 22px; font-weight: 400; line-height: 1.2; overflow-wrap: anywhere; }
   .detail { font-size: 13px; color: var(--secondary-text-color); }
   .ribbon { height: 56px; margin-top: 10px; }
@@ -1626,6 +1740,107 @@ const MINI_STYLE = `
     .content { flex-direction: column; align-items: stretch; gap: 6px; }
     .ribbon { flex-basis: 20px; }
   }
+`;
+
+// ---------------------------------------------------------------------------
+// Illustration
+// ---------------------------------------------------------------------------
+
+// Night picture: forced by illustration_theme, else the sun below the horizon, else Home Assistant's dark mode.
+const isNight = (hass, config) => {
+  const theme = config?.illustration_theme;
+  if (theme === "night") return true;
+  if (theme === "day") return false;
+  const sun = hass?.states?.["sun.sun"];
+  if (sun && !["unknown", "unavailable", ""].includes(String(sun.state))) return sun.state === "below_horizon";
+  return !!hass?.themes?.darkMode;
+};
+
+// State of the next hour → picture: the sun and white clouds when dry, grey clouds coming in with the walker opening
+// the umbrella when rain is near, rain falling into a puddle when it rains, plain clouds when the forecast is unknown.
+const SCENE_KIND = { dry: "dry", soon: "soon", raining: "rain", stopping: "rain", stale: "idle", unknown: "idle", unavailable: "idle" };
+const CLOUD_PATH = "M-14,4 C-17,4 -18,0 -14.5,-1 C-14,-5 -8,-6 -6,-3 C-4,-8 4,-8 5,-2 C9,-3 12,0 10,4 Z";
+const STARS = [[12, 8], [44, 18], [96, 6], [132, 24], [168, 10], [188, 30], [70, 30]];
+
+// The banner picture (200 × 80, drawn at the right of the banner, bottom on the ground strip). `level` (1–3) sets
+// how many drops fall; `uid` keeps each card's gradient id apart on a page with several cards.
+const rainSceneSvg = (kind, level, uid) => {
+  const clouds = {
+    dry: [[140, 18, 1], [176, 26, 0.7]],
+    soon: [[190, 18, 1.8], [166, 26, 1.4]],
+    rain: [[140, 18, 1.8], [176, 26, 1.4]],
+    idle: [[146, 18, 1.4], [178, 28, 1]],
+  }[kind];
+  const cloudCls = { dry: "rc-cloud", soon: "rc-cloud grey approach", rain: "rc-cloud grey", idle: "rc-cloud dim" }[kind];
+  const n = [10, 10, 13, 16][Math.max(0, Math.min(3, level || 3))];
+  const drops =
+    kind === "rain"
+      ? `<g class="rc-drops">${Array.from({ length: n }, (_, i) => {
+          const x = 112 + (i * 88) / n;
+          return `<line class="rc-drop r${i % 4}" x1="${x.toFixed(1)}" y1="30" x2="${(x - 2).toFixed(1)}" y2="38"/>`;
+        }).join("")}</g>`
+      : "";
+  const umbrella = kind === "soon" || kind === "rain" ? '<path class="rc-shaft" d="M0 -26 V-44"/><path class="rc-umbrella" d="M-14 -40 Q0 -54 14 -40Z"/>' : "";
+  return `<svg class="rc-scene ${kind}" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+    <defs><radialGradient id="rc-sun-${uid}"><stop offset=".55" stop-color="#ffd65a" stop-opacity=".45"/><stop offset="1" stop-color="#ffd65a" stop-opacity="0"/></radialGradient></defs>
+    <g class="rc-night">${STARS.map(([x, y], i) => `<circle class="rc-star${i % 3 ? "" : " tw"}" cx="${x}" cy="${y}" r=".7"/>`).join("")}</g>
+    ${kind === "dry" ? `<g class="rc-day"><circle cx="150" cy="18" r="11" fill="url(#rc-sun-${uid})"/><circle class="rc-sun" cx="150" cy="18" r="6"/></g><path class="rc-night rc-moon" d="M150 11a7 7 0 1 0 6 10.5 5.6 5.6 0 1 1-6-10.5Z"/>` : ""}
+    <g class="${cloudCls}">${clouds.map(([x, y, k]) => `<path transform="translate(${x} ${y}) scale(${k})" d="${CLOUD_PATH}"/>`).join("")}</g>
+    ${drops}
+    <path class="rc-hill" d="M0,80 C40,72 90,70 200,72 L200,80Z"/>
+    ${kind === "rain" ? '<ellipse class="rc-puddle" cx="150" cy="77" rx="20" ry="2"/>' : ""}
+    <g class="rc-walker" transform="translate(110 76)"><circle class="rc-skin" cy="-28" r="3.4"/><rect class="rc-coat" x="-3" y="-24" width="6" height="12" rx="2"/><rect class="rc-leg" x="-3" y="-12" width="2" height="12"/><rect class="rc-leg" x="1" y="-12" width="2" height="12"/>${umbrella}</g>
+  </svg>`;
+};
+
+// The banner: sky gradient, the picture at the right on a 10 px lawn strip, the title and subtitle on the sky at the
+// left. Colours day and night; the animations stop with prefers-reduced-motion (BASE_STYLE).
+const BANNER_STYLE = `
+  .banner { position: relative; overflow: hidden; height: 90px; --rc-g: 10px; --rc-scene-w: min(200px, 54%);
+            --rc-sky-text: #0d2a45; --rc-sky-muted: #3b5b78; color: var(--rc-sky-text);
+            background: linear-gradient(90deg, #f1f8ff 0%, #e2f1fd 34%, #b9def8 70%, #9fd0f3 100%); }
+  .banner.night { --rc-sky-text: #fff; --rc-sky-muted: rgba(255,255,255,.78);
+                  background: linear-gradient(90deg, #1b2f52 0%, #15284a 36%, #0f1f3d 72%, #0a1830 100%); }
+  .rc-scene { position: absolute; right: 0; bottom: var(--rc-g); height: calc(100% - var(--rc-g)); width: var(--rc-scene-w); }
+  .rc-ground { position: absolute; left: 0; right: 0; bottom: 0; height: var(--rc-g);
+               background: repeating-linear-gradient(90deg, #5aa83d 0 22px, #6cbb4c 22px 44px); }
+  .night .rc-ground { background: repeating-linear-gradient(90deg, #1f4a2a 0 22px, #245433 22px 44px); }
+  .htext { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--rc-g); right: calc(var(--rc-scene-w) + 4px);
+           display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 14px; min-width: 0; }
+  .htext .titles { min-width: 0; }
+  .banner .name { font-size: 16px; font-weight: 500; }
+  .banner .sub { font-size: 13px; color: var(--rc-sky-muted); }
+  .banner .type-icon { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(47,128,237,.18); }
+  .banner .type-icon svg { fill: color-mix(in srgb, var(--rc-tint) 85%, #0d2a45); }
+  .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .banner.night .type-icon svg { fill: color-mix(in srgb, var(--rc-tint) 70%, #fff); }
+  .banner .zoom { position: absolute; z-index: 2; top: 6px; right: 6px; margin: 0; color: var(--rc-sky-text); background: rgba(255,255,255,.55); border-color: rgba(13,42,69,.12); }
+  .banner.night .zoom { background: rgba(10,20,40,.45); border-color: rgba(255,255,255,.14); }
+  .rc-night, .night .rc-day { display: none; }
+  .night .rc-night { display: inline; }
+  .rc-star { fill: #fff; opacity: .8; } .rc-star.tw { animation: rc-twinkle 3.2s ease-in-out infinite alternate; }
+  .rc-sun { fill: #ffd65a; } .rc-moon { fill: #f4f1dc; }
+  .rc-cloud { fill: #fff; opacity: .9; } .rc-cloud.grey { fill: #8a96a6; opacity: .95; } .rc-cloud.dim { fill: #c9d3de; }
+  .night .rc-cloud { fill: #3d4a5e; } .night .rc-cloud.grey { fill: #4a5568; } .night .rc-cloud.dim { fill: #3a4558; }
+  .dry .rc-cloud { animation: rc-drift 7s ease-in-out infinite alternate; }
+  .rc-cloud.approach { animation: rc-approach 6s ease-in-out infinite alternate; }
+  .rc-drop { stroke: #4aa3ea; stroke-width: 1.4; stroke-linecap: round; opacity: 0; animation: rc-rain .8s linear infinite; }
+  .rc-drop.r1 { animation-delay: -.2s; } .rc-drop.r2 { animation-delay: -.4s; } .rc-drop.r3 { animation-delay: -.6s; }
+  .night .rc-drop { stroke: #5aa9e6; }
+  .rc-hill { fill: #86c27f; } .night .rc-hill { fill: #17303d; }
+  .rc-puddle { fill: #4fb3e8; opacity: .5; transform-box: fill-box; transform-origin: center; animation: rc-puddle 2.4s ease-in-out infinite; }
+  .rc-skin { fill: #f2c9a0; } .rc-coat { fill: #2f80ed; } .rc-leg { fill: #444; }
+  .rc-shaft { stroke: #444; stroke-width: 1; fill: none; } .rc-umbrella { fill: #e5484d; }
+  .night .rc-leg { fill: #59606b; } .night .rc-shaft { stroke: #8a929e; }
+  @keyframes rc-rain { from { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(34px); opacity: 0; } }
+  @keyframes rc-approach { from { transform: translateX(0); } to { transform: translateX(-30px); } }
+  @keyframes rc-drift { from { transform: translateX(0); } to { transform: translateX(-6px); } }
+  @keyframes rc-puddle { 50% { transform: scaleX(1.12); } }
+  @keyframes rc-twinkle { from { opacity: .35; } to { opacity: 1; } }
+  /* Narrow card: a smaller picture leaves room for the title; very narrow: the sky and the lawn alone. */
+  @container (max-width: 300px) { .banner { --rc-scene-w: 42%; } }
+  /* Very narrow card: no room for the picture beside the text, the sky and the lawn stay. */
+  @container (max-width: 220px) { .rc-scene { display: none; } .htext { right: 36px; } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -1679,12 +1894,15 @@ const sameDeps = (a, b) => !!a && a.length === b.length && a.every((d, i) => d =
 // Cards
 // ---------------------------------------------------------------------------
 
+let cardUid = 0;
+
 class RainCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this._html = "";
     this._gen = 0;
+    this._uid = ++cardUid;
     this.shadowRoot.addEventListener("click", (ev) => this._onClick(ev));
     // Enter / Space on an element with the button role acts as a click, as on a <button>.
     this.shadowRoot.addEventListener("keydown", (ev) => {
@@ -1731,7 +1949,7 @@ class RainCard extends HTMLElement {
     if (!h || !this._config) return null;
     const { id } = findSource(h, this._config);
     if (!id) return null;
-    return [h.states[id], h.entities, h.devices, h.language, h.locale, h.config, this._wx, this._minute];
+    return [h.states[id], h.entities, h.devices, h.language, h.locale, h.config, h.states["sun.sun"], h.themes?.darkMode, this._wx, this._minute];
   }
 
   connectedCallback() {
@@ -1900,23 +2118,42 @@ class RainCard extends HTMLElement {
 
   // ---- Parts -------------------------------------------------------------
 
-  // The badge keeps the card's blue accent whatever the state; its drops fall while it rains.
-  _badge(falling) {
+  // The badge's colour follows the state of the next hour (the pill's colour); its drops fall while it rains.
+  _badge(v) {
+    const falling = v.an.state === "raining" || v.an.state === "stopping";
     const drops = ICONS.drops.map((d, i) => `<path class="drop d${i + 1}" d="${d}"/>`).join("");
-    return `<span class="type-icon${falling ? " falling" : ""}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS.cloud}"/>${drops}</svg></span>`;
+    return `<span class="type-icon ${STATE_CLASS[v.an.state]}${falling ? " falling" : ""}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS.cloud}"/>${drops}</svg></span>`;
   }
 
+  // The pill: in the classic header, or at the top of the full card's content under the illustrated banner.
+  _chip(v, id) {
+    return `<span class="chip clickable ${STATE_CLASS[v.an.state]}" role="button" tabindex="0" data-entity="${esc(id)}" title="${esc(v.pill)}" aria-label="${esc(v.pill)}"><span class="dot"></span><span class="chip-text">${esc(v.pill)}</span></span>`;
+  }
+
+  _illustrated() {
+    return this._config.illustration !== false;
+  }
+
+  // The header: the illustrated banner (picture of the state, title and subtitle on its sky), or with
+  // `illustration: false` the classic header with the pill.
   _header(v, id, sub) {
-    const cls = STATE_CLASS[v.an.state];
     const c = this._config;
-    const falling = v.an.state === "raining" || v.an.state === "stopping";
     const name = c.show_title === false ? "" : `<div class="name">${esc(c.name || this._t("title"))}</div>`;
     const subtitle = c.show_subtitle === false || !sub ? "" : `<div class="sub">${esc(sub)}</div>`;
+    if (this._illustrated()) {
+      return `
+      <div class="banner${isNight(this._hass, c) ? " night" : ""}">
+        ${rainSceneSvg(SCENE_KIND[v.an.state], v.an.level, this._uid)}
+        <div class="rc-ground"></div>
+        <div class="htext">${this._badge(v)}<div class="titles">${name}${subtitle}</div></div>
+        ${this._zoomButton()}
+      </div>`;
+    }
     return `
       <div class="header">
-        ${this._badge(falling)}
+        ${this._badge(v)}
         <div class="titles">${name}${subtitle}</div>
-        <span class="chip clickable ${cls}" role="button" tabindex="0" data-entity="${esc(id)}" title="${esc(v.pill)}" aria-label="${esc(v.pill)}"><span class="dot"></span><span class="chip-text">${esc(v.pill)}</span></span>
+        ${this._chip(v, id)}
         ${this._zoomButton()}
       </div>`;
   }
@@ -1950,6 +2187,11 @@ class RainCard extends HTMLElement {
     return `<div class="source${v.an.state === "stale" ? " stale" : ""}">${esc(parts.join(" · "))}</div>`;
   }
 
+  // The banner's styles, only when it is shown.
+  _bannerStyle() {
+    return this._illustrated() ? BANNER_STYLE : "";
+  }
+
   _errorCard(key) {
     const text = key === "unknown_entity" ? `${this._t(key)}: ${this._config.entity}` : this._t(key);
     return `<style>${BASE_STYLE}</style><ha-card><div class="warning">${esc(text)}</div></ha-card>`;
@@ -1965,11 +2207,12 @@ class RainCard extends HTMLElement {
       c.show_ribbon === false
         ? ""
         : `${this._ribbon(v, true)}<div class="axis" aria-hidden="true"><span>${esc(this._t("axis_now"))}</span><span>${esc(this._t("axis_30"))}</span><span>${esc(this._t("axis_60"))}</span></div>`;
-    return `<style>${BASE_STYLE}${FULL_STYLE}</style>${this._colorVars()}
+    const headline = `<div class="headline clickable" role="button" tabindex="0" data-entity="${esc(id)}"><div class="big">${esc(v.head)}</div>${detail}</div>`;
+    return `<style>${BASE_STYLE}${FULL_STYLE}${this._bannerStyle()}</style>${this._colorVars()}
       <ha-card>
         ${this._header(v, id, locationOf(this._hass, c, id))}
         <div class="content">
-          <div class="headline clickable" role="button" tabindex="0" data-entity="${esc(id)}"><div class="big">${esc(v.head)}</div>${detail}</div>
+          ${this._illustrated() ? `<div class="lead">${this._chip(v, id)}${headline}</div>` : headline}
           ${ribbon}
           ${c.show_source === false ? "" : this._sourceLine(v, id)}
         </div>
@@ -2042,9 +2285,10 @@ class RainMiniCard extends RainCard {
     const { id, error } = findSource(this._hass, this._config);
     if (error) return this._errorCard(error);
     const v = this._view(id);
-    return `<style>${BASE_STYLE}${MINI_STYLE}</style>${this._colorVars()}
+    // On the banner's sky, the pill's text stands under the title.
+    return `<style>${BASE_STYLE}${MINI_STYLE}${this._bannerStyle()}</style>${this._colorVars()}
       <ha-card>
-        ${this._header(v, id, "")}
+        ${this._header(v, id, this._illustrated() ? v.pill : "")}
         <div class="content">${this._miniLine(v)}${this._config.show_ribbon === false ? "" : this._ribbon(v, false)}</div>
       </ha-card>`;
   }
@@ -2092,6 +2336,7 @@ class RainCardEditor extends HTMLElement {
   // [name, default]
   static get toggles() {
     return [
+      ["illustration", true],
       ["show_title", true],
       ["show_subtitle", true],
       ["show_details", true],
@@ -2110,12 +2355,21 @@ class RainCardEditor extends HTMLElement {
     this._render();
   }
 
+  // Default values, dropped from the YAML: the toggles and the illustration theme (automatic: the sun).
+  _defaults() {
+    return { ...Object.fromEntries(this.constructor.toggles), illustration_theme: "auto" };
+  }
+
   _schema() {
     const tr = (k) => t(this._hass, this._config, k);
     return [
       { name: "entity", selector: { entity: { filter: [{ domain: "sensor", integration: "meteo_france" }, { domain: "weather" }] } } },
       { type: "grid", name: "", schema: [{ name: "name", selector: { text: {} } }, { name: "location", selector: { text: {} } }] },
       { type: "grid", name: "", schema: this.constructor.toggles.map(([name]) => ({ name, selector: { boolean: {} } })) },
+      {
+        name: "illustration_theme",
+        selector: { select: { mode: "dropdown", options: ["auto", "day", "night"].map((value) => ({ value, label: tr(`theme_${value}`) })) } },
+      },
       {
         name: "language",
         selector: { select: { mode: "dropdown", options: [{ value: "", label: tr("lang_auto") }, ...LANGUAGES.map(([value, label]) => ({ value, label }))] } },
@@ -2125,20 +2379,19 @@ class RainCardEditor extends HTMLElement {
 
   _render() {
     if (!this._hass || !this._config) return;
-    const toggles = this.constructor.toggles;
     if (!this._form) {
       this._form = document.createElement("ha-form");
       this._form.computeLabel = (s) => t(this._hass, this._config, s.name);
       this._form.computeHelper = (s) => (s.name === "zoom" ? t(this._hass, this._config, "zoom_helper") : s.name === "entity" ? t(this._hass, this._config, "entity_helper") : undefined);
       this._form.addEventListener("value-changed", (ev) => {
         ev.stopPropagation();
-        this._config = cleanConfig(ev.detail.value, Object.fromEntries(toggles));
+        this._config = cleanConfig(ev.detail.value, this._defaults());
         this.dispatchEvent(new CustomEvent("config-changed", { detail: { config: this._config }, bubbles: true, composed: true }));
       });
       this.appendChild(this._form);
     }
     const data = { ...this._config };
-    for (const [name, def] of toggles) if (data[name] === undefined) data[name] = def;
+    for (const [name, def] of Object.entries(this._defaults())) if (data[name] === undefined) data[name] = def;
     this._form.hass = this._hass;
     if (this._dataFor !== this._config) {
       this._dataFor = this._config;
