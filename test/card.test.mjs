@@ -188,7 +188,7 @@ test("the location is the option, the Météo-France city, the weather entity's 
 test("rain soon: pill, headline, intensity and end time, the ribbon of 12 bars", () => {
   const card = newCard();
   const t = text(card);
-  assert.match(t, /Rain Lyon In 13 min/);
+  assert.match(t, /Rain In 13 min Lyon Rain at 14:35/);
   assert.match(t, /Rain at 14:35 Moderate · until 15:00/);
   assert.match(t, /Now \+30 min \+60 min/);
   assert.match(t, /Météo-France · updated 14:20/);
@@ -198,10 +198,10 @@ test("rain soon: pill, headline, intensity and end time, the ribbon of 12 bars",
     bars.map((b) => b.match(/l([0-3n])/)[1]),
     ["0", "0", "0", "1", "2", "2", "1", "1", "0", "0", "0", "0"],
   );
-  // The coming shower glows, no drops yet; the badge keeps its accent (no state class) and its drops do not fall.
+  // The coming shower glows, no drops yet; the badge takes the state's colour and its drops do not fall.
   assert.equal((html(card).match(/ next"/g) || []).length, 5);
   assert.doesNotMatch(html(card), /class="drip"/);
-  assert.match(html(card), /class="type-icon"/);
+  assert.match(html(card), /class="type-icon soon"/);
   assert.match(html(card), /class="chip clickable soon"/);
   // The now marker, 2 minutes into the first bar.
   assert.match(html(card), /class="now" style="left:3\.33%"/);
@@ -209,15 +209,15 @@ test("rain soon: pill, headline, intensity and end time, the ribbon of 12 bars",
 
 test("dry, raining, stopping, stale and unavailable", () => {
   const cases = [
-    [dry, /Dry Dry for the next hour No rain expected before 15:20/],
-    [raining, /Raining Raining until about 15:20 Heavy · all through the next hour/],
-    [stopping, /Stops in 23 min Rain stops at 14:45 Heavy · dry from 14:45/],
-    [stale, /Outdated Forecast out of date Last forecast at 12:20/],
-    [{ [MF]: { state: "unavailable", attributes: {} } }, /Unavailable Forecast unavailable The forecast entity is unavailable/],
+    [dry, /Rain Dry Lyon Dry for the next hour No rain expected before 15:20/],
+    [raining, /Rain Raining Lyon Raining until about 15:20 Heavy · all through the next hour/],
+    [stopping, /Rain Stops in 23 min Lyon Rain stops at 14:45 Heavy · dry from 14:45/],
+    [stale, /Rain Outdated Lyon Forecast out of date Last forecast at 12:20/],
+    [{ [MF]: { state: "unavailable", attributes: {} } }, /Rain Unavailable Lyon Forecast unavailable The forecast entity is unavailable/],
   ];
   for (const [o, re] of cases) assert.match(text(newCard({}, makeHass(o))), re);
   const rainingHtml = html(newCard({}, makeHass(raining)));
-  assert.match(rainingHtml, /type-icon falling/);
+  assert.match(rainingHtml, /type-icon rain falling/);
   assert.equal((rainingHtml.match(/class="drip"/g) || []).length, 12);
   // Stale: no now marker, the bars greyed.
   const staleHtml = html(newCard({}, makeHass(stale)));
@@ -234,14 +234,14 @@ test("only the next rain time: dry until then, rain from then on", () => {
 
 test("options hide the title, location, details, ribbon and source line", () => {
   const card = newCard({ name: "Garden", location: "Back yard" });
-  assert.match(text(card), /^Garden Back yard/);
+  assert.match(text(card), /^Garden In 13 min Back yard/);
   const bare = newCard({ show_title: false, show_subtitle: false, show_details: false, show_ribbon: false, show_source: false });
   const t = text(bare);
   assert.equal(t, "In 13 min Rain at 14:35");
 });
 
 test("the language option and Home Assistant's language translate the card", () => {
-  assert.match(text(newCard({ language: "fr" })), /Pluie Lyon Dans 13 min Pluie à 14:35 Modérée · jusqu'à 15:00/);
+  assert.match(text(newCard({ language: "fr" })), /Pluie Dans 13 min Lyon Pluie à 14:35 Modérée · jusqu'à 15:00/);
   assert.match(text(newCard({}, makeHass({}, { language: "de", locale: { language: "de", time_format: "24", time_zone: "server" } }))), /Regen um 14:35/);
   // 12-hour clock from the profile.
   assert.match(text(newCard({}, makeHass({}, { locale: { language: "en", time_format: "12", time_zone: "server" } }))), /Rain at 02:35\sPM/);
@@ -269,10 +269,10 @@ test("a weather entity: hourly forecast fetched with weather.get_forecasts, then
     { ...hass.ws[0], target: { ...hass.ws[0].target }, service_data: { ...hass.ws[0].service_data } },
     { type: "call_service", domain: "weather", service: "get_forecasts", service_data: { type: "hourly" }, target: { entity_id: WX }, return_response: true },
   );
-  assert.match(text(card), /No data No forecast right now/);
+  assert.match(text(card), /Rain No data Home No forecast right now/);
   await flush();
   const t = text(card);
-  assert.match(t, /Rain Home In 38 min Rain at 15:00 Moderate · until at least 15:20/);
+  assert.match(t, /Rain In 38 min Home Rain at 15:00 Moderate · until at least 15:20/);
   assert.match(t, /Met\.no · updated 14:22 · hourly forecast/);
   // Not fetched again on the next hass until the entity changes or 15 minutes went by.
   card.hass = makeHass();
@@ -354,18 +354,112 @@ test("editors: the YAML keeps only what differs from the defaults; the mini edit
   });
   const full = rc.RainCardEditor.toggles.map(([n]) => n);
   const mini = rc.RainMiniCardEditor.toggles.map(([n]) => n);
-  assert.deepEqual([...full], ["show_title", "show_subtitle", "show_details", "show_ribbon", "show_source"]);
+  assert.deepEqual([...full], ["illustration", "show_title", "show_subtitle", "show_details", "show_ribbon", "show_source"]);
   assert.deepEqual([...mini], [...full, "zoom"]);
   const ed = new rc.RainMiniCardEditor();
   ed.setConfig({ type: "custom:rain-mini-card" });
   ed.hass = makeHass();
   const names = JSON.stringify(ed._form.schema);
-  for (const n of ["entity", "name", "location", "language", ...mini]) assert.ok(names.includes(`"${n}"`), n);
+  for (const n of ["entity", "name", "location", "language", "illustration_theme", ...mini]) assert.ok(names.includes(`"${n}"`), n);
   assert.equal(ed._form.data.zoom, true);
   assert.equal(ed._form.computeLabel({ name: "show_ribbon" }), "Show the 60-minute ribbon");
+});
+
+test("illustrated banner: picture of the state, night by sun or theme, classic header when turned off", () => {
+  const scene = (o, config = {}, extra = {}) => {
+    const h = html(newCard(config, { ...makeHass(o), ...extra }));
+    return { h, kind: h.match(/class="rc-scene (\w+)"/)?.[1], night: /class="banner night"/.test(h) };
+  };
+  assert.equal(scene().kind, "soon");
+  assert.equal(scene(dry).kind, "dry");
+  assert.equal(scene(raining).kind, "rain");
+  assert.equal(scene(stopping).kind, "rain");
+  assert.equal(scene(stale).kind, "idle");
+  assert.match(scene(raining).h, /class="rc-drop r0"/);
+  assert.match(scene().h, /class="rc-ground"/);
+  // Night: the sun below the horizon or the dark theme (even with the sun up); illustration_theme forces either.
+  assert.equal(scene().night, false);
+  assert.equal(scene({}, {}, { themes: { darkMode: true } }).night, true);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, {}, { themes: { darkMode: true } }).night, true);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, {}, { themes: { darkMode: false } }).night, false);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } }, { illustration_theme: "day" }, { themes: { darkMode: true } }).night, false);
+  assert.equal(scene({ "sun.sun": { entity_id: "sun.sun", state: "below_horizon", attributes: {} } }).night, true);
+  assert.equal(scene({}, { illustration_theme: "night" }).night, true);
+  assert.equal(scene({}, { illustration_theme: "day" }, { themes: { darkMode: true } }).night, false);
+  // Each card has its own gradient id.
+  const d = [newCard({}, makeHass(dry)), newCard({}, makeHass(dry))].map((c) => html(c).match(/id="(rc-sun-\d+)"/)[1]);
+  assert.notEqual(d[0], d[1]);
+  // illustration: false keeps the classic header with the pill.
+  const classic = scene({}, { illustration: false }).h;
+  assert.doesNotMatch(classic, /class="banner/);
+  assert.match(classic, /class="header"/);
+  // The pill on the banner's title row, in the colour of the icon; the mini card: the same banner, no subtitle repeating it.
+  assert.match(scene(raining).h, /<div class="trow"><div class="name">Rain<\/div><span class="chip clickable rain"[^>]*title="Raining"/);
+  const mini = html(newCard({}, makeHass(raining), rc.RainMiniCard));
+  assert.match(mini, /class="banner"[\s\S]*rc-scene rain[\s\S]*<div class="trow"><div class="name">Rain<\/div><span class="chip clickable rain"/);
+  assert.doesNotMatch(mini, /<div class="sub">/);
 });
 
 test("both cards are registered for the card picker", () => {
   const types = [...rc.window.customCards.map((c) => c.type)];
   assert.deepEqual(types, ["rain-card", "rain-mini-card"]);
+});
+
+// A measured layout stand-in for _fitPill: the title block (.titles) with its row (title + pill) in a banner whose
+// lawn strip starts at `floor`. Widths in px; `tall` makes the block run past the strip once the pill drops.
+const fitLayout = ({ title, pill, row, tall = false, banner = true }) => {
+  const rect = (o) => ({ top: 0, bottom: 0, left: 0, right: 0, width: 0, height: 0, ...o });
+  const classes = new Set();
+  const name = { textContent: "x", width: title };
+  const chip = { getBoundingClientRect: () => rect({ width: classes.has("pill-dot") ? 14 : pill }) };
+  const trow = { querySelector: (s) => (s.includes(".name") ? name : chip), getBoundingClientRect: () => rect({ width: row }) };
+  const ground = { getBoundingClientRect: () => rect({ top: 80 }) };
+  const box = { getBoundingClientRect: () => rect({ top: 0, bottom: 90 }), querySelector: () => ground };
+  const t = {
+    classList: { add: (c) => classes.add(c), remove: (...c) => {
+        for (const x of c) classes.delete(x);
+      } },
+    querySelector: () => trow,
+    closest: () => (banner ? box : null),
+    getBoundingClientRect: () => rect({ top: 10, bottom: classes.has("below") && tall ? 86 : 70, width: row }),
+  };
+  return { t, classes };
+};
+
+test("the status pill stays beside a whole title, else drops under the subtitle, else keeps its dot (measured)", () => {
+  const w = rc.window;
+  w.getComputedStyle = () => ({ columnGap: "8px" });
+  w.document.createRange = () => {
+    let el;
+    return { selectNodeContents: (e) => (el = e), getBoundingClientRect: () => ({ width: el.width }) };
+  };
+  const fit = (opts) => {
+    const card = newCard();
+    const l = fitLayout(opts);
+    card.shadowRoot.querySelectorAll = () => [l.t];
+    card._fitPill();
+    return [...l.classes].sort().join(" ");
+  };
+  // Whole title + gap + whole pill fit on the row: the pill stays beside the title.
+  assert.equal(fit({ title: 60, pill: 70, row: 140 }), "");
+  // One pixel short: never an ellipsised title beside the pill, the pill goes under the subtitle.
+  assert.equal(fit({ title: 63, pill: 70, row: 140 }), "below");
+  // Long Greek/Cyrillic/German labels: decided by the measure, not by a fixed width.
+  assert.equal(fit({ title: 40, pill: 130, row: 160 }), "below");
+  assert.equal(fit({ title: 40, pill: 112, row: 160 }), "");
+  // Under the subtitle but the block would run into the lawn strip, or the label is wider than the line: dot only.
+  assert.equal(fit({ title: 90, pill: 70, row: 140, tall: true }), "below pill-dot");
+  assert.equal(fit({ title: 90, pill: 150, row: 140 }), "below pill-dot");
+  // The classic header (no banner) follows the same rule.
+  assert.equal(fit({ title: 90, pill: 70, row: 140, banner: false }), "below");
+  delete w.getComputedStyle;
+  delete w.document.createRange;
+});
+
+test("no fixed width decides the pill's place: only the dot-only rule at 200 px is a width rule", () => {
+  const css = html(newCard());
+  assert.doesNotMatch(css, /@container rc-head/);
+  assert.match(css, /@container rc-card \(max-width: 200px\) \{\s*\.chip \{ padding: 4px; flex: none; \}\s*\.chip-text \{ display: none; \}/);
+  assert.match(css, /\.titles\.below \.trow \{ display: contents; \}/);
+  assert.match(css, /\.titles\.pill-dot \.chip-text \{ display: none; \}/);
 });

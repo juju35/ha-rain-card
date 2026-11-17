@@ -64,6 +64,11 @@ const STRINGS = {
     zoom_helper: "Button at the top right that switches the mini card to the full card and back",
     zoom_in: "Show the full card",
     zoom_out: "Show the compact card",
+    illustration: "Animated illustration",
+    illustration_theme: "Illustration theme",
+    theme_auto: "Automatic (sun or dark theme)",
+    theme_day: "Day",
+    theme_night: "Night",
   },
   fr: {
     title: "Pluie",
@@ -119,6 +124,11 @@ const STRINGS = {
     zoom_helper: "Bouton en haut à droite qui passe de la mini-carte à la carte complète et inversement",
     zoom_in: "Afficher la carte complète",
     zoom_out: "Afficher la carte compacte",
+    illustration: "Illustration animée",
+    illustration_theme: "Thème de l’illustration",
+    theme_auto: "Automatique (soleil ou thème sombre)",
+    theme_day: "Jour",
+    theme_night: "Nuit",
   },
   de: {
     title: "Regen",
@@ -174,6 +184,11 @@ const STRINGS = {
     zoom_helper: "Schaltfläche oben rechts, die von der Mini-Karte zur vollständigen Karte und zurück wechselt",
     zoom_in: "Vollständige Karte anzeigen",
     zoom_out: "Kompakte Karte anzeigen",
+    illustration: "Animierte Illustration",
+    illustration_theme: "Thema der Illustration",
+    theme_auto: "Automatisch (Sonne oder dunkles Design)",
+    theme_day: "Tag",
+    theme_night: "Nacht",
   },
   es: {
     title: "Lluvia",
@@ -229,6 +244,11 @@ const STRINGS = {
     zoom_helper: "Botón arriba a la derecha que cambia de la minitarjeta a la tarjeta completa y viceversa",
     zoom_in: "Mostrar la tarjeta completa",
     zoom_out: "Mostrar la tarjeta compacta",
+    illustration: "Ilustración animada",
+    illustration_theme: "Tema de la ilustración",
+    theme_auto: "Automático (sol o tema oscuro)",
+    theme_day: "Día",
+    theme_night: "Noche",
   },
   it: {
     title: "Pioggia",
@@ -284,6 +304,11 @@ const STRINGS = {
     zoom_helper: "Pulsante in alto a destra che passa dalla mini scheda alla scheda completa e viceversa",
     zoom_in: "Mostra la scheda completa",
     zoom_out: "Mostra la scheda compatta",
+    illustration: "Illustrazione animata",
+    illustration_theme: "Tema dell’illustrazione",
+    theme_auto: "Automatico (sole o tema scuro)",
+    theme_day: "Giorno",
+    theme_night: "Notte",
   },
   nl: {
     title: "Regen",
@@ -339,6 +364,11 @@ const STRINGS = {
     zoom_helper: "Knop rechtsboven die de minikaart naar de volledige kaart omschakelt en terug",
     zoom_in: "Volledige kaart tonen",
     zoom_out: "Compacte kaart tonen",
+    illustration: "Geanimeerde illustratie",
+    illustration_theme: "Thema van de illustratie",
+    theme_auto: "Automatisch (zon of donker thema)",
+    theme_day: "Dag",
+    theme_night: "Nacht",
   },
   pt: {
     title: "Chuva",
@@ -394,6 +424,11 @@ const STRINGS = {
     zoom_helper: "Botão no canto superior direito que alterna entre o mini cartão e o cartão completo",
     zoom_in: "Mostrar o cartão completo",
     zoom_out: "Mostrar o cartão compacto",
+    illustration: "Ilustração animada",
+    illustration_theme: "Tema da ilustração",
+    theme_auto: "Automático (sol ou tema escuro)",
+    theme_day: "Dia",
+    theme_night: "Noite",
   },
   pl: {
     title: "Deszcz",
@@ -449,6 +484,11 @@ const STRINGS = {
     zoom_helper: "Przycisk w prawym górnym rogu przełączający minikartę na pełną kartę i z powrotem",
     zoom_in: "Pokaż pełną kartę",
     zoom_out: "Pokaż kompaktową kartę",
+    illustration: "Animowana ilustracja",
+    illustration_theme: "Motyw ilustracji",
+    theme_auto: "Automatycznie (słońce lub ciemny motyw)",
+    theme_day: "Dzień",
+    theme_night: "Noc",
   },
   sr: {
     title: "Киша",
@@ -504,6 +544,11 @@ const STRINGS = {
     zoom_helper: "Дугме горе десно које пребацује мини картицу на пуну картицу и назад",
     zoom_in: "Прикажи пуну картицу",
     zoom_out: "Прикажи компактну картицу",
+    illustration: "Анимирана илустрација",
+    illustration_theme: "Тема илустрације",
+    theme_auto: "Аутоматски (сунце или тамна тема)",
+    theme_day: "Дан",
+    theme_night: "Ноћ",
   },
   "sr-Latn": {
     title: "Kiša",
@@ -559,6 +604,11 @@ const STRINGS = {
     zoom_helper: "Dugme gore desno koje prebacuje mini karticu na punu karticu i nazad",
     zoom_in: "Prikaži punu karticu",
     zoom_out: "Prikaži kompaktnu karticu",
+    illustration: "Animirana ilustracija",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Automatski (sunce ili tamna tema)",
+    theme_day: "Dan",
+    theme_night: "Noć",
   },
   ro: {
     title: "Ploaie",
@@ -614,6 +664,11 @@ const STRINGS = {
     zoom_helper: "Buton din dreapta sus care comută mini cardul în cardul complet și înapoi",
     zoom_in: "Afișează cardul complet",
     zoom_out: "Afișează cardul compact",
+    illustration: "Ilustrație animată",
+    illustration_theme: "Tema ilustrației",
+    theme_auto: "Automat (soare sau temă întunecată)",
+    theme_day: "Zi",
+    theme_night: "Noapte",
   },
   da: {
     title: "Regn",
@@ -669,6 +724,11 @@ const STRINGS = {
     zoom_helper: "Knap øverst til højre, der skifter minikortet til det fulde kort og tilbage",
     zoom_in: "Vis det fulde kort",
     zoom_out: "Vis det kompakte kort",
+    illustration: "Animeret illustration",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatisk (sol eller mørkt tema)",
+    theme_day: "Dag",
+    theme_night: "Nat",
   },
   sv: {
     title: "Regn",
@@ -724,6 +784,11 @@ const STRINGS = {
     zoom_helper: "Knapp uppe till höger som växlar minikortet till hela kortet och tillbaka",
     zoom_in: "Visa hela kortet",
     zoom_out: "Visa det kompakta kortet",
+    illustration: "Animerad illustration",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatiskt (sol eller mörkt tema)",
+    theme_day: "Dag",
+    theme_night: "Natt",
   },
   bg: {
     title: "Дъжд",
@@ -779,6 +844,11 @@ const STRINGS = {
     zoom_helper: "Бутон горе вдясно, който превключва мини картата към пълната карта и обратно",
     zoom_in: "Показване на пълната карта",
     zoom_out: "Показване на компактната карта",
+    illustration: "Анимирана илюстрация",
+    illustration_theme: "Тема на илюстрацията",
+    theme_auto: "Автоматично (слънце или тъмна тема)",
+    theme_day: "Ден",
+    theme_night: "Нощ",
   },
   ru: {
     title: "Дождь",
@@ -834,6 +904,11 @@ const STRINGS = {
     zoom_helper: "Кнопка в правом верхнем углу, переключающая мини-карточку на полную карточку и обратно",
     zoom_in: "Показать полную карточку",
     zoom_out: "Показать компактную карточку",
+    illustration: "Анимированная иллюстрация",
+    illustration_theme: "Тема иллюстрации",
+    theme_auto: "Автоматически (солнце или тёмная тема)",
+    theme_day: "День",
+    theme_night: "Ночь",
   },
   uk: {
     title: "Дощ",
@@ -889,6 +964,11 @@ const STRINGS = {
     zoom_helper: "Кнопка вгорі праворуч, що перемикає міні-картку на повну картку й назад",
     zoom_in: "Показати повну картку",
     zoom_out: "Показати компактну картку",
+    illustration: "Анімована ілюстрація",
+    illustration_theme: "Тема ілюстрації",
+    theme_auto: "Автоматично (сонце або темна тема)",
+    theme_day: "День",
+    theme_night: "Ніч",
   },
   hu: {
     title: "Eső",
@@ -944,6 +1024,11 @@ const STRINGS = {
     zoom_helper: "Jobb felső gomb, amely a mini kártyát a teljes kártyára váltja és vissza",
     zoom_in: "Teljes kártya megjelenítése",
     zoom_out: "Kompakt kártya megjelenítése",
+    illustration: "Animált illusztráció",
+    illustration_theme: "Az illusztráció témája",
+    theme_auto: "Automatikus (nap vagy sötét téma)",
+    theme_day: "Nappal",
+    theme_night: "Éjszaka",
   },
   sk: {
     title: "Dážď",
@@ -999,6 +1084,11 @@ const STRINGS = {
     zoom_helper: "Tlačidlo vpravo hore, ktoré prepína minikartu na celú kartu a späť",
     zoom_in: "Zobraziť celú kartu",
     zoom_out: "Zobraziť kompaktnú kartu",
+    illustration: "Animovaná ilustrácia",
+    illustration_theme: "Téma ilustrácie",
+    theme_auto: "Automaticky (slnko alebo tmavá téma)",
+    theme_day: "Deň",
+    theme_night: "Noc",
   },
   cs: {
     title: "Déšť",
@@ -1054,6 +1144,11 @@ const STRINGS = {
     zoom_helper: "Tlačítko vpravo nahoře, které přepíná minikartu na celou kartu a zpět",
     zoom_in: "Zobrazit celou kartu",
     zoom_out: "Zobrazit kompaktní kartu",
+    illustration: "Animovaná ilustrace",
+    illustration_theme: "Motiv ilustrace",
+    theme_auto: "Automaticky (slunce nebo tmavý motiv)",
+    theme_day: "Den",
+    theme_night: "Noc",
   },
   sl: {
     title: "Dež",
@@ -1109,6 +1204,11 @@ const STRINGS = {
     zoom_helper: "Gumb zgoraj desno, ki preklopi mini kartico v polno kartico in nazaj",
     zoom_in: "Prikaži polno kartico",
     zoom_out: "Prikaži kompaktno kartico",
+    illustration: "Animirana ilustracija",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Samodejno (sonce ali temna tema)",
+    theme_day: "Dan",
+    theme_night: "Noč",
   },
   lv: {
     title: "Lietus",
@@ -1164,6 +1264,11 @@ const STRINGS = {
     zoom_helper: "Poga augšējā labajā stūrī, kas pārslēdz mini kartīti uz pilno kartīti un atpakaļ",
     zoom_in: "Rādīt pilno kartīti",
     zoom_out: "Rādīt kompakto kartīti",
+    illustration: "Animēta ilustrācija",
+    illustration_theme: "Ilustrācijas motīvs",
+    theme_auto: "Automātiski (saule vai tumšā tēma)",
+    theme_day: "Diena",
+    theme_night: "Nakts",
   },
   el: {
     title: "Βροχή",
@@ -1219,6 +1324,11 @@ const STRINGS = {
     zoom_helper: "Κουμπί πάνω δεξιά που αλλάζει τη μίνι κάρτα στην πλήρη κάρτα και πίσω",
     zoom_in: "Εμφάνιση της πλήρους κάρτας",
     zoom_out: "Εμφάνιση της συμπαγούς κάρτας",
+    illustration: "Κινούμενη εικονογράφηση",
+    illustration_theme: "Θέμα εικονογράφησης",
+    theme_auto: "Αυτόματο (ήλιος ή σκοτεινό θέμα)",
+    theme_day: "Ημέρα",
+    theme_night: "Νύχτα",
   },
 };
 
@@ -1304,6 +1414,13 @@ const intlLocale = (hass, config) => {
 
 const t = (hass, config, key, vars = {}) =>
   String(STRINGS[lang(hass, config)][key] ?? STRINGS.en[key] ?? key).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+
+// The whole width of an element's text in its own font, an ellipsised one included.
+const textWidth = (el) => {
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  return range.getBoundingClientRect().width;
+};
 
 const svgIcon = (path, cls = "") => `<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
 
@@ -1518,7 +1635,7 @@ const BASE_STYLE = `
           --rc-rain: #1e88e5; --rc-stop: #00acc1;
           /* Shades of the bars, the same in light and dark themes: pale for light rain, deep for heavy rain. */
           --rc-light: #90caf9; --rc-moderate: #42a5f5; --rc-heavy: #1976d2; --rc-crit: var(--error-color, #db4437); --rc-idle: var(--disabled-text-color, #9e9e9e); }
-  ha-card { overflow: hidden; container-type: inline-size; }
+  ha-card { overflow: hidden; container: rc-card / inline-size; }
   /* A size container has no width of its own: this zero-height grid gives the card a natural width without a minimum. */
   :host { display: block; min-width: 0; --rc-natural-width: 360px; }
   :host::before { content: ""; display: grid; grid-template-columns: minmax(0, var(--rc-natural-width)); height: 0; }
@@ -1534,13 +1651,25 @@ const BASE_STYLE = `
           flex: 0 1 auto; min-width: 0; max-width: 50%; overflow: hidden; box-sizing: border-box; transition: background-color .3s ease, color .3s ease; }
   .chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 0; }
-  /* With a subtitle, the pill stays on the title's line (16 px × 1.25 + 12 px subtitle line, centered: 14.4 px up). */
-  .header:has(.sub) > .chip { margin-bottom: 14.4px; }
   .titles { flex: 1 1 0; min-width: 5ch; }
+  /* The status pill right after the title, centred on it, while the title stays whole and the pill's whole label fits
+     beside it; otherwise (measured by the card, see _fitPill) the pill on its own line under a one-line subtitle, and
+     if even that would not fit in the header, its dot alone (the label stays in title and aria-label). */
+  .titles { display: flex; flex-direction: column; }
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow .name { flex: 0 1 auto; min-width: 0; }
+  .trow .chip { flex: none; max-width: none; }
+  .titles.below { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; }
+  .titles.below .trow { display: contents; }
+  .titles.below .name { max-width: 100%; }
+  .titles.below > .sub { justify-self: stretch; }
+  .titles.below .chip { grid-row: 3; margin-top: 2px; max-width: 100%; }
+  .titles.pill-dot .chip { padding: 4px; }
+  .titles.pill-dot .chip-text { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sub { font-size: 12px; color: var(--secondary-text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .type-icon { position: relative; display: flex; flex: none; width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center;
-               --rc-tint: var(--rc-accent); background: color-mix(in srgb, var(--rc-tint) 16%, transparent); transition: background-color .3s ease; }
+               --rc-tint: var(--c, var(--rc-accent)); background: color-mix(in srgb, var(--rc-tint) 16%, transparent); transition: background-color .3s ease; }
   .type-icon svg { width: 24px; height: 24px; overflow: visible; fill: color-mix(in srgb, var(--rc-tint) 60%, var(--primary-text-color)); transition: fill .3s ease; }
   .type-icon .drop { opacity: .9; }
   .type-icon.falling .drop { animation: rc-fall 1s linear infinite; }
@@ -1587,7 +1716,7 @@ const BASE_STYLE = `
                 background: color-mix(in srgb, var(--primary-text-color) 30%, transparent); animation: rc-halo 3s ease-out infinite; }
   @keyframes rc-halo { 0% { transform: scale(.4); opacity: .9; } 60%, 100% { transform: scale(1.4); opacity: 0; } }
   /* Narrow card: the pill keeps only its colored dot (its text stays in title and aria-label). */
-  @container (max-width: 230px) {
+  @container rc-card (max-width: 200px) {
     .chip { padding: 4px; flex: none; }
     .chip-text { display: none; }
     .header { gap: 6px; }
@@ -1597,13 +1726,17 @@ const BASE_STYLE = `
 const FULL_STYLE = `
   .content { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 10px; }
   .headline { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  /* Under the illustrated banner, the pill sits at the right of the headline. */
+  .lead { display: flex; align-items: flex-start; gap: 8px; }
+  .lead .headline { flex: 1 1 auto; }
+  .lead .chip { order: 2; margin-top: 4px; }
   .big { font-size: 22px; font-weight: 400; line-height: 1.2; overflow-wrap: anywhere; }
   .detail { font-size: 13px; color: var(--secondary-text-color); }
   .ribbon { height: 56px; margin-top: 10px; }
   .axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--secondary-text-color); margin-top: -4px; }
   .source { font-size: 11px; color: var(--secondary-text-color); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .source.stale { color: color-mix(in srgb, var(--rc-soon) 50%, var(--primary-text-color)); }
-  @container (max-width: 260px) {
+  @container rc-card (max-width: 260px) {
     .big { font-size: 18px; }
     .ribbon { height: 44px; }
     .bars { gap: 2px; }
@@ -1622,10 +1755,123 @@ const MINI_STYLE = `
   .now { top: -2px; bottom: -2px; }
   .now::before { top: -2px; left: -1.5px; width: 5px; height: 5px; }
   .now::after { display: none; }
-  @container (max-width: 220px) {
+  @container rc-card (max-width: 220px) {
     .content { flex-direction: column; align-items: stretch; gap: 6px; }
     .ribbon { flex-basis: 20px; }
   }
+`;
+
+// ---------------------------------------------------------------------------
+// Illustration
+// ---------------------------------------------------------------------------
+
+// Night picture: forced by illustration_theme, else the sun below the horizon OR Home Assistant's dark mode (the dark
+// theme wins even while the sun is up; with no usable sun.sun the dark mode alone decides).
+const isNight = (hass, config) => {
+  const theme = config?.illustration_theme;
+  if (theme === "night") return true;
+  if (theme === "day") return false;
+  const sun = hass?.states?.["sun.sun"];
+  if (sun && !["unknown", "unavailable", ""].includes(String(sun.state))) return sun.state === "below_horizon" || !!hass?.themes?.darkMode;
+  return !!hass?.themes?.darkMode;
+};
+
+// State of the next hour → picture: the sun and white clouds when dry, grey clouds coming in with the walker opening
+// the umbrella when rain is near, rain falling into a puddle when it rains, plain clouds when the forecast is unknown.
+const SCENE_KIND = { dry: "dry", soon: "soon", raining: "rain", stopping: "rain", stale: "idle", unknown: "idle", unavailable: "idle" };
+const CLOUD_PATH = "M-14,4 C-17,4 -18,0 -14.5,-1 C-14,-5 -8,-6 -6,-3 C-4,-8 4,-8 5,-2 C9,-3 12,0 10,4 Z";
+const STARS = [[12, 8], [44, 18], [96, 6], [132, 24], [168, 10], [188, 30], [70, 30]];
+
+// The banner picture (200 × 80, drawn at the right of the banner, bottom on the ground strip). `level` (1–3) sets
+// how many drops fall; `uid` keeps each card's gradient id apart on a page with several cards.
+const rainSceneSvg = (kind, level, uid) => {
+  const clouds = {
+    dry: [[140, 18, 1], [176, 26, 0.7]],
+    soon: [[190, 18, 1.8], [166, 26, 1.4]],
+    rain: [[140, 18, 1.8], [176, 26, 1.4]],
+    idle: [[146, 18, 1.4], [178, 28, 1]],
+  }[kind];
+  const cloudCls = { dry: "rc-cloud", soon: "rc-cloud grey approach", rain: "rc-cloud grey", idle: "rc-cloud dim" }[kind];
+  const n = [10, 10, 13, 16][Math.max(0, Math.min(3, level || 3))];
+  const drops =
+    kind === "rain"
+      ? `<g class="rc-drops">${Array.from({ length: n }, (_, i) => {
+          const x = 112 + (i * 88) / n;
+          return `<line class="rc-drop r${i % 4}" x1="${x.toFixed(1)}" y1="30" x2="${(x - 2).toFixed(1)}" y2="38"/>`;
+        }).join("")}</g>`
+      : "";
+  const umbrella = kind === "soon" || kind === "rain" ? '<path class="rc-shaft" d="M0 -26 V-44"/><path class="rc-umbrella" d="M-14 -40 Q0 -54 14 -40Z"/>' : "";
+  return `<svg class="rc-scene ${kind}" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+    <defs><radialGradient id="rc-sun-${uid}"><stop offset=".55" stop-color="#ffd65a" stop-opacity=".45"/><stop offset="1" stop-color="#ffd65a" stop-opacity="0"/></radialGradient></defs>
+    <g class="rc-night">${STARS.map(([x, y], i) => `<circle class="rc-star${i % 3 ? "" : " tw"}" cx="${x}" cy="${y}" r=".7"/>`).join("")}</g>
+    ${kind === "dry" ? `<g class="rc-day"><circle cx="150" cy="18" r="11" fill="url(#rc-sun-${uid})"/><circle class="rc-sun" cx="150" cy="18" r="6"/></g><path class="rc-night rc-moon" d="M150 11a7 7 0 1 0 6 10.5 5.6 5.6 0 1 1-6-10.5Z"/>` : ""}
+    <g class="${cloudCls}">${clouds.map(([x, y, k]) => `<path transform="translate(${x} ${y}) scale(${k})" d="${CLOUD_PATH}"/>`).join("")}</g>
+    ${drops}
+    <path class="rc-hill" d="M0,80 C40,72 90,70 200,72 L200,80Z"/>
+    ${kind === "rain" ? '<ellipse class="rc-puddle" cx="150" cy="77" rx="20" ry="2"/>' : ""}
+    <g class="rc-walker" transform="translate(110 76)"><circle class="rc-skin" cy="-28" r="3.4"/><rect class="rc-coat" x="-3" y="-24" width="6" height="12" rx="2"/><rect class="rc-leg" x="-3" y="-12" width="2" height="12"/><rect class="rc-leg" x="1" y="-12" width="2" height="12"/>${umbrella}</g>
+  </svg>`;
+};
+
+// The banner: sky gradient, the picture at the right on a 10 px lawn strip, the title and subtitle on the sky at the
+// left. Colours day and night; the animations stop with prefers-reduced-motion (BASE_STYLE).
+const BANNER_STYLE = `
+  .banner { position: relative; overflow: hidden; height: 90px; --rc-g: 10px; --rc-scene-w: min(200px, 54%);
+            --rc-sky-text: #0d2a45; --rc-sky-muted: #3b5b78; color: var(--rc-sky-text);
+            background: linear-gradient(90deg, #f1f8ff 0%, #e2f1fd 34%, #b9def8 70%, #9fd0f3 100%); }
+  .banner.night { --rc-sky-text: #fff; --rc-sky-muted: rgba(255,255,255,.78);
+                  background: linear-gradient(90deg, #1b2f52 0%, #15284a 36%, #0f1f3d 72%, #0a1830 100%); }
+  .rc-scene { position: absolute; right: 0; bottom: var(--rc-g); height: calc(100% - var(--rc-g)); width: var(--rc-scene-w); }
+  .rc-ground { position: absolute; left: 0; right: 0; bottom: 0; height: var(--rc-g);
+               background: repeating-linear-gradient(90deg, #5aa83d 0 22px, #6cbb4c 22px 44px); }
+  .night .rc-ground { background: repeating-linear-gradient(90deg, #1f4a2a 0 22px, #245433 22px 44px); }
+  .htext { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--rc-g); right: calc(var(--rc-scene-w) + 4px);
+           display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 14px; min-width: 0; }
+  .htext .titles { min-width: 0; }
+  .banner .name { font-size: 16px; font-weight: 500; }
+  .banner .sub { font-size: 13px; color: var(--rc-sky-muted); }
+  .banner .type-icon { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(47,128,237,.18); }
+  .banner .type-icon svg { fill: color-mix(in srgb, var(--rc-tint) 85%, #0d2a45); }
+  .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .banner.night .type-icon svg { fill: color-mix(in srgb, var(--rc-tint) 70%, #fff); }
+  /* The mini card's detail button: 24 px frosted round in the banner's top right corner. */
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; border: 0; color: #33506b;
+                  background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner .zoom .icon { width: 16px; height: 16px; }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner.night .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
+  /* The status pill on the title's row or under the subtitle: see .trow in BASE_STYLE and _fitPill. */
+  .htext .titles { flex: 1 1 auto; }
+  .banner .chip { line-height: 16px;
+                  background: color-mix(in srgb, var(--c, var(--rc-accent)) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 45%, #0d2a45); }
+  .banner.night .chip { background: color-mix(in srgb, var(--c, var(--rc-accent)) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 35%, #ffffff); }
+  .banner .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rc-night, .night .rc-day { display: none; }
+  .night .rc-night { display: inline; }
+  .rc-star { fill: #fff; opacity: .8; } .rc-star.tw { animation: rc-twinkle 3.2s ease-in-out infinite alternate; }
+  .rc-sun { fill: #ffd65a; } .rc-moon { fill: #f4f1dc; }
+  .rc-cloud { fill: #fff; opacity: .9; } .rc-cloud.grey { fill: #8a96a6; opacity: .95; } .rc-cloud.dim { fill: #c9d3de; }
+  .night .rc-cloud { fill: #3d4a5e; } .night .rc-cloud.grey { fill: #4a5568; } .night .rc-cloud.dim { fill: #3a4558; }
+  .dry .rc-cloud { animation: rc-drift 7s ease-in-out infinite alternate; }
+  .rc-cloud.approach { animation: rc-approach 6s ease-in-out infinite alternate; }
+  .rc-drop { stroke: #4aa3ea; stroke-width: 1.4; stroke-linecap: round; opacity: 0; animation: rc-rain .8s linear infinite; }
+  .rc-drop.r1 { animation-delay: -.2s; } .rc-drop.r2 { animation-delay: -.4s; } .rc-drop.r3 { animation-delay: -.6s; }
+  .night .rc-drop { stroke: #5aa9e6; }
+  .rc-hill { fill: #86c27f; } .night .rc-hill { fill: #17303d; }
+  .rc-puddle { fill: #4fb3e8; opacity: .5; transform-box: fill-box; transform-origin: center; animation: rc-puddle 2.4s ease-in-out infinite; }
+  .rc-skin { fill: #f2c9a0; } .rc-coat { fill: #2f80ed; } .rc-leg { fill: #444; }
+  .rc-shaft { stroke: #444; stroke-width: 1; fill: none; } .rc-umbrella { fill: #e5484d; }
+  .night .rc-leg { fill: #59606b; } .night .rc-shaft { stroke: #8a929e; }
+  @keyframes rc-rain { from { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(34px); opacity: 0; } }
+  @keyframes rc-approach { from { transform: translateX(0); } to { transform: translateX(-30px); } }
+  @keyframes rc-drift { from { transform: translateX(0); } to { transform: translateX(-6px); } }
+  @keyframes rc-puddle { 50% { transform: scaleX(1.12); } }
+  @keyframes rc-twinkle { from { opacity: .35; } to { opacity: 1; } }
+  /* Narrow card: a smaller picture leaves room for the title; very narrow: the sky and the lawn alone. */
+  @container rc-card (max-width: 300px) { .banner { --rc-scene-w: 42%; } }
+  /* Very narrow card: no room for the picture beside the text, the sky and the lawn stay. */
+  @container rc-card (max-width: 220px) { .rc-scene { display: none; } .htext { right: 36px; } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -1679,12 +1925,15 @@ const sameDeps = (a, b) => !!a && a.length === b.length && a.every((d, i) => d =
 // Cards
 // ---------------------------------------------------------------------------
 
+let cardUid = 0;
+
 class RainCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this._html = "";
     this._gen = 0;
+    this._uid = ++cardUid;
     this.shadowRoot.addEventListener("click", (ev) => this._onClick(ev));
     // Enter / Space on an element with the button role acts as a click, as on a <button>.
     this.shadowRoot.addEventListener("keydown", (ev) => {
@@ -1731,11 +1980,23 @@ class RainCard extends HTMLElement {
     if (!h || !this._config) return null;
     const { id } = findSource(h, this._config);
     if (!id) return null;
-    return [h.states[id], h.entities, h.devices, h.language, h.locale, h.config, this._wx, this._minute];
+    return [h.states[id], h.entities, h.devices, h.language, h.locale, h.config, h.states["sun.sun"], h.themes?.darkMode, this._wx, this._minute];
   }
 
   connectedCallback() {
     if (this._hass && this._config) this._update();
+    // A new width (or the web font loaded): the status pill is fitted again, in the next frame.
+    if (typeof ResizeObserver === "function") {
+      this._resize ??= new ResizeObserver((entries) => {
+        const w = Math.round(entries.at(-1).contentRect.width);
+        if (w === this._fitWidth) return;
+        this._fitWidth = w;
+        cancelAnimationFrame(this._fitFrame);
+        this._fitFrame = requestAnimationFrame(() => this._fitPill());
+      });
+      this._resize.observe(this);
+    }
+    document.fonts?.ready?.then(() => this._fitPill());
     // The now marker and the minutes left move on their own: redrawn every minute while the card is on the page.
     clearInterval(this._tick);
     this._tick = setInterval(() => {
@@ -1747,6 +2008,8 @@ class RainCard extends HTMLElement {
   disconnectedCallback() {
     clearInterval(this._tick);
     this._tick = null;
+    this._resize?.disconnect();
+    this._fitWidth = null;
   }
 
   setConfig(config) {
@@ -1792,7 +2055,33 @@ class RainCard extends HTMLElement {
       this._html = html;
       morph(this.shadowRoot, html);
     }
+    this._fitPill();
     this._syncWeather();
+  }
+
+  // The status pill stays right after the title only while the whole title and the pill's whole label fit on that
+  // row; otherwise it takes a line of its own under the subtitle (.below), and when even then the title, the subtitle
+  // and the pill would not fit above the banner's lawn strip, it keeps its dot alone (.pill-dot). Measured in the
+  // real fonts, so that every language and title length gets its own answer.
+  _fitPill() {
+    for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
+      const row = t.querySelector(":scope > .trow");
+      const chip = row?.querySelector(":scope > .chip");
+      if (!chip?.getBoundingClientRect) continue;
+      t.classList.remove("below", "pill-dot");
+      const name = row.querySelector(":scope > .name");
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const title = name ? textWidth(name) + gap : 0;
+      const pill = chip.getBoundingClientRect().width;
+      if (title + pill <= row.getBoundingClientRect().width) continue;
+      t.classList.add("below");
+      const r = t.getBoundingClientRect();
+      const banner = t.closest(".banner");
+      const box = banner?.getBoundingClientRect();
+      const floor = banner?.querySelector(".rc-ground")?.getBoundingClientRect().top ?? box?.bottom;
+      const tall = box && (r.bottom > floor + 0.5 || r.top < box.top - 0.5);
+      if (tall || pill > r.width + 0.5) t.classList.add("pill-dot");
+    }
   }
 
   _onClick(ev) {
@@ -1900,23 +2189,41 @@ class RainCard extends HTMLElement {
 
   // ---- Parts -------------------------------------------------------------
 
-  // The badge keeps the card's blue accent whatever the state; its drops fall while it rains.
-  _badge(falling) {
+  // The badge's colour follows the state of the next hour (the pill's colour); its drops fall while it rains.
+  _badge(v) {
+    const falling = v.an.state === "raining" || v.an.state === "stopping";
     const drops = ICONS.drops.map((d, i) => `<path class="drop d${i + 1}" d="${d}"/>`).join("");
-    return `<span class="type-icon${falling ? " falling" : ""}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS.cloud}"/>${drops}</svg></span>`;
+    return `<span class="type-icon ${STATE_CLASS[v.an.state]}${falling ? " falling" : ""}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS.cloud}"/>${drops}</svg></span>`;
   }
 
+  // The pill: in the classic header, or at the top of the full card's content under the illustrated banner.
+  _chip(v, id) {
+    return `<span class="chip clickable ${STATE_CLASS[v.an.state]}" role="button" tabindex="0" data-entity="${esc(id)}" title="${esc(v.pill)}" aria-label="${esc(v.pill)}"><span class="dot"></span><span class="chip-text">${esc(v.pill)}</span></span>`;
+  }
+
+  _illustrated() {
+    return this._config.illustration !== false;
+  }
+
+  // The header: the illustrated banner (picture of the state, title and subtitle on its sky), or with
+  // `illustration: false` the classic header with the pill.
   _header(v, id, sub) {
-    const cls = STATE_CLASS[v.an.state];
     const c = this._config;
-    const falling = v.an.state === "raining" || v.an.state === "stopping";
     const name = c.show_title === false ? "" : `<div class="name">${esc(c.name || this._t("title"))}</div>`;
-    const subtitle = c.show_subtitle === false || !sub ? "" : `<div class="sub">${esc(sub)}</div>`;
+    const subtitle = c.show_subtitle === false || !sub ? "" : `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>`;
+    if (this._illustrated()) {
+      return `
+      <div class="banner${isNight(this._hass, c) ? " night" : ""}">
+        ${rainSceneSvg(SCENE_KIND[v.an.state], v.an.level, this._uid)}
+        <div class="rc-ground"></div>
+        <div class="htext">${this._badge(v)}<div class="titles"><div class="trow">${name}${this._chip(v, id)}</div>${subtitle}</div></div>
+        ${this._zoomButton()}
+      </div>`;
+    }
     return `
       <div class="header">
-        ${this._badge(falling)}
-        <div class="titles">${name}${subtitle}</div>
-        <span class="chip clickable ${cls}" role="button" tabindex="0" data-entity="${esc(id)}" title="${esc(v.pill)}" aria-label="${esc(v.pill)}"><span class="dot"></span><span class="chip-text">${esc(v.pill)}</span></span>
+        ${this._badge(v)}
+        <div class="titles"><div class="trow">${name}${this._chip(v, id)}</div>${subtitle}</div>
         ${this._zoomButton()}
       </div>`;
   }
@@ -1950,6 +2257,11 @@ class RainCard extends HTMLElement {
     return `<div class="source${v.an.state === "stale" ? " stale" : ""}">${esc(parts.join(" · "))}</div>`;
   }
 
+  // The banner's styles, only when it is shown.
+  _bannerStyle() {
+    return this._illustrated() ? BANNER_STYLE : "";
+  }
+
   _errorCard(key) {
     const text = key === "unknown_entity" ? `${this._t(key)}: ${this._config.entity}` : this._t(key);
     return `<style>${BASE_STYLE}</style><ha-card><div class="warning">${esc(text)}</div></ha-card>`;
@@ -1965,11 +2277,12 @@ class RainCard extends HTMLElement {
       c.show_ribbon === false
         ? ""
         : `${this._ribbon(v, true)}<div class="axis" aria-hidden="true"><span>${esc(this._t("axis_now"))}</span><span>${esc(this._t("axis_30"))}</span><span>${esc(this._t("axis_60"))}</span></div>`;
-    return `<style>${BASE_STYLE}${FULL_STYLE}</style>${this._colorVars()}
+    const headline = `<div class="headline clickable" role="button" tabindex="0" data-entity="${esc(id)}"><div class="big">${esc(v.head)}</div>${detail}</div>`;
+    return `<style>${BASE_STYLE}${FULL_STYLE}${this._bannerStyle()}</style>${this._colorVars()}
       <ha-card>
         ${this._header(v, id, locationOf(this._hass, c, id))}
         <div class="content">
-          <div class="headline clickable" role="button" tabindex="0" data-entity="${esc(id)}"><div class="big">${esc(v.head)}</div>${detail}</div>
+          ${headline}
           ${ribbon}
           ${c.show_source === false ? "" : this._sourceLine(v, id)}
         </div>
@@ -2042,7 +2355,8 @@ class RainMiniCard extends RainCard {
     const { id, error } = findSource(this._hass, this._config);
     if (error) return this._errorCard(error);
     const v = this._view(id);
-    return `<style>${BASE_STYLE}${MINI_STYLE}</style>${this._colorVars()}
+    // On the banner, the pill stands on the title's row: no subtitle repeating it.
+    return `<style>${BASE_STYLE}${MINI_STYLE}${this._bannerStyle()}</style>${this._colorVars()}
       <ha-card>
         ${this._header(v, id, "")}
         <div class="content">${this._miniLine(v)}${this._config.show_ribbon === false ? "" : this._ribbon(v, false)}</div>
@@ -2092,6 +2406,7 @@ class RainCardEditor extends HTMLElement {
   // [name, default]
   static get toggles() {
     return [
+      ["illustration", true],
       ["show_title", true],
       ["show_subtitle", true],
       ["show_details", true],
@@ -2110,12 +2425,21 @@ class RainCardEditor extends HTMLElement {
     this._render();
   }
 
+  // Default values, dropped from the YAML: the toggles and the illustration theme (automatic: the sun or the dark theme).
+  _defaults() {
+    return { ...Object.fromEntries(this.constructor.toggles), illustration_theme: "auto" };
+  }
+
   _schema() {
     const tr = (k) => t(this._hass, this._config, k);
     return [
       { name: "entity", selector: { entity: { filter: [{ domain: "sensor", integration: "meteo_france" }, { domain: "weather" }] } } },
       { type: "grid", name: "", schema: [{ name: "name", selector: { text: {} } }, { name: "location", selector: { text: {} } }] },
       { type: "grid", name: "", schema: this.constructor.toggles.map(([name]) => ({ name, selector: { boolean: {} } })) },
+      {
+        name: "illustration_theme",
+        selector: { select: { mode: "dropdown", options: ["auto", "day", "night"].map((value) => ({ value, label: tr(`theme_${value}`) })) } },
+      },
       {
         name: "language",
         selector: { select: { mode: "dropdown", options: [{ value: "", label: tr("lang_auto") }, ...LANGUAGES.map(([value, label]) => ({ value, label }))] } },
@@ -2125,20 +2449,19 @@ class RainCardEditor extends HTMLElement {
 
   _render() {
     if (!this._hass || !this._config) return;
-    const toggles = this.constructor.toggles;
     if (!this._form) {
       this._form = document.createElement("ha-form");
       this._form.computeLabel = (s) => t(this._hass, this._config, s.name);
       this._form.computeHelper = (s) => (s.name === "zoom" ? t(this._hass, this._config, "zoom_helper") : s.name === "entity" ? t(this._hass, this._config, "entity_helper") : undefined);
       this._form.addEventListener("value-changed", (ev) => {
         ev.stopPropagation();
-        this._config = cleanConfig(ev.detail.value, Object.fromEntries(toggles));
+        this._config = cleanConfig(ev.detail.value, this._defaults());
         this.dispatchEvent(new CustomEvent("config-changed", { detail: { config: this._config }, bubbles: true, composed: true }));
       });
       this.appendChild(this._form);
     }
     const data = { ...this._config };
-    for (const [name, def] of toggles) if (data[name] === undefined) data[name] = def;
+    for (const [name, def] of Object.entries(this._defaults())) if (data[name] === undefined) data[name] = def;
     this._form.hass = this._hass;
     if (this._dataFor !== this._config) {
       this._dataFor = this._config;
