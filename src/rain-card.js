@@ -1826,7 +1826,7 @@ const BANNER_STYLE = `
   .htext .titles { flex: 1 1 auto; display: flex; flex-direction: column; }
   .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
   .trow .name { flex: 0 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .banner .chip { flex: none; max-width: calc(100% - 5ch - 8px); line-height: 16px;
+  .banner .chip { flex: none; max-width: calc(100% - 56px); line-height: 16px;
                   background: color-mix(in srgb, var(--c, var(--rc-accent)) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 45%, #0d2a45); }
   .banner.night .chip { background: color-mix(in srgb, var(--c, var(--rc-accent)) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c, var(--rc-accent)) 35%, #ffffff); }
   .banner .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
