@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.2 - 2026-11-20
+
+### Performance
+- Automatic source: the scan of every state (sorted by entity id) to find the Météo-France Next rain sensor or a weather entity now runs once per registry change instead of up to three times on every state change of the instance; the entity found is kept while it still qualifies.
+
+### Maintenance
+- The commitlint config is an ES module (the package is `"type": "module"`): the local `commit-msg` hook no longer crashes.
+
 ## 1.2.1 - 2026-11-18
 
 ### Fixes
