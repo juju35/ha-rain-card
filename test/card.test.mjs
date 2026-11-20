@@ -172,6 +172,33 @@ test("the Météo-France next rain sensor is found first, then a weather entity"
   assert.deepEqual({ ...rc.findSource({ ...hass, states: {} }, {}) }, { error: "no_source" });
 });
 
+test("the automatic source is not scanned again for a state change elsewhere, but is when the source goes", () => {
+  const hass = makeHass();
+  // A spy state: the scan sorts every state by entity id, the cached path never reads it.
+  let reads = 0;
+  const spy = {
+    get entity_id() {
+      reads++;
+      return "light.spy";
+    },
+    state: "on",
+    attributes: {},
+  };
+  const withSpy = { ...hass, states: { ...hass.states, "light.spy": spy } };
+  assert.deepEqual({ ...rc.findSource(withSpy, {}) }, { id: MF });
+  assert.ok(reads > 0);
+  reads = 0;
+  // Another entity changes: same registry, same number of states, the cached sensor still qualifies.
+  const next = { ...withSpy, states: { ...withSpy.states } };
+  assert.deepEqual({ ...rc.findSource(next, {}) }, { id: MF });
+  assert.equal(reads, 0);
+  // The sensor is gone: a new scan finds the weather entity.
+  assert.deepEqual({ ...rc.findSource({ ...hass, states: { [WX]: states[WX] } }, {}) }, { id: WX });
+  // The registry changes (the sensor hidden): scanned again.
+  const hidden = { ...hass, entities: { ...hass.entities, [MF]: { ...hass.entities[MF], hidden: true } } };
+  assert.deepEqual({ ...rc.findSource(hidden, {}) }, { id: WX });
+});
+
 test("the location is the option, the Météo-France city, the weather entity's name or Home Assistant's", () => {
   const hass = makeHass();
   assert.equal(rc.cityOf("Météo-France forecast for city Lyon - Rhône (69) - FR"), "Lyon");
@@ -463,4 +490,29 @@ test("no fixed width decides the pill's place: only the dot-only rule at 200 px 
   assert.match(css, /@container rc-card \(max-width: 200px\) \{\s*\.chip \{ padding: 4px; flex: none; \}\s*\.chip-text \{ display: none; \}/);
   assert.match(css, /\.titles\.below \.trow \{ display: contents; \}/);
   assert.match(css, /\.titles\.pill-dot \.chip-text \{ display: none; \}/);
+});
+
+test("the status pill sits at the right end of the title's row, and at the start of its own line below", () => {
+  const css = html(newCard());
+  assert.match(css, /\.trow \.chip \{ flex: none; max-width: none; margin-left: auto; \}/);
+  assert.match(css, /\.titles\.below \.chip \{[^}]*margin-left: 0;/);
+});
+
+test("the error card is not rebuilt for unrelated state changes, and goes once the entity appears", () => {
+  const hass = makeHass();
+  const states = { ...hass.states };
+  delete states["sensor.nope"];
+  const card = newCard({ entity: "sensor.nope" }, { ...hass, states });
+  let renders = 0;
+  const render = card._render.bind(card);
+  card._render = () => {
+    renders++;
+    return render();
+  };
+  card.hass = { ...hass, states: { ...states, "light.kitchen": { entity_id: "light.kitchen", state: "on" } } };
+  card.hass = { ...hass, states: { ...states, "light.kitchen": { entity_id: "light.kitchen", state: "off" } } };
+  assert.equal(renders, 0);
+  card.hass = { ...hass, states: { ...states, "sensor.nope": { ...hass.states[Object.keys(hass.states)[0]], entity_id: "sensor.nope" } } };
+  assert.equal(renders, 1);
+  assert.doesNotMatch(text(card), /Entity not found/);
 });

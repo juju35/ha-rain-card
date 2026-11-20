@@ -1557,13 +1557,35 @@ const HOURLY = 2; // WeatherEntityFeature.FORECAST_HOURLY
 
 // The forecast entity: the `entity` option, else the first Météo-France next rain sensor, else the first weather
 // entity with an hourly forecast (or a forecast attribute), in the order of the entity ids.
-const findSource = (hass, config) => {
-  if (config.entity) return hass.states[config.entity] ? { id: config.entity } : { error: "unknown_entity" };
+const isWx = (s) => s?.entity_id.startsWith("weather.") && (s.attributes?.supported_features & HOURLY || Array.isArray(s.attributes?.forecast));
+
+const scanSource = (hass) => {
   const all = Object.values(hass.states || {}).sort((a, b) => a.entity_id.localeCompare(b.entity_id));
   const mf = all.find((s) => isMf(s, hass) && !hass.entities?.[s.entity_id]?.hidden);
   if (mf) return { id: mf.entity_id };
-  const wx = all.find((s) => s.entity_id.startsWith("weather.") && (s.attributes?.supported_features & HOURLY || Array.isArray(s.attributes?.forecast)));
+  const wx = all.find(isWx);
   return wx ? { id: wx.entity_id } : { error: "no_source" };
+};
+
+// The automatic scan sorts every state of the instance: it is kept while the entity registry and the number of
+// states stay the same and the entity found still qualifies, so that a state change elsewhere costs no new scan.
+let sourceCache = null;
+const findSource = (hass, config) => {
+  if (config.entity) return hass.states[config.entity] ? { id: config.entity } : { error: "unknown_entity" };
+  const count = Object.keys(hass.states || {}).length;
+  const c = sourceCache;
+  if (c && c.hass === hass) return c.result;
+  if (c && c.entities === hass.entities && c.count === count) {
+    const s = c.result.id && hass.states[c.result.id];
+    const still = c.result.id ? (c.result.id.startsWith("weather.") ? isWx(s) : isMf(s, hass)) : true;
+    if (still) {
+      c.hass = hass;
+      return c.result;
+    }
+  }
+  const result = scanSource(hass);
+  sourceCache = { hass, entities: hass.entities, count, result };
+  return result;
 };
 
 // The city of a Météo-France device ("Météo-France forecast for city Lyon - Rhône (69) - FR" → "Lyon").
@@ -1652,18 +1674,18 @@ const BASE_STYLE = `
   .chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 0; }
   .titles { flex: 1 1 0; min-width: 5ch; }
-  /* The status pill right after the title, centred on it, while the title stays whole and the pill's whole label fits
-     beside it; otherwise (measured by the card, see _fitPill) the pill on its own line under a one-line subtitle, and
+  /* The status pill at the right end of the title's row, centred on it, while the title stays whole and the pill's whole
+     label fits beside it; otherwise (measured by the card, see _fitPill) the pill on its own line under a one-line subtitle, and
      if even that would not fit in the header, its dot alone (the label stays in title and aria-label). */
   .titles { display: flex; flex-direction: column; }
   .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
   .trow .name { flex: 0 1 auto; min-width: 0; }
-  .trow .chip { flex: none; max-width: none; }
+  .trow .chip { flex: none; max-width: none; margin-left: auto; }
   .titles.below { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; }
   .titles.below .trow { display: contents; }
   .titles.below .name { max-width: 100%; }
   .titles.below > .sub { justify-self: stretch; }
-  .titles.below .chip { grid-row: 3; margin-top: 2px; max-width: 100%; }
+  .titles.below .chip { grid-row: 3; margin-top: 2px; margin-left: 0; max-width: 100%; }
   .titles.pill-dot .chip { padding: 4px; }
   .titles.pill-dot .chip-text { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -1976,8 +1998,9 @@ class RainCard extends HTMLElement {
   _deps() {
     const h = this._hass;
     if (!h || !this._config) return null;
-    const { id } = findSource(h, this._config);
-    if (!id) return null;
+    const { id, error } = findSource(h, this._config);
+    // No source: the error card only changes with the error (a source that appears ends it) and the language.
+    if (!id) return [error, h.language, h.locale, h.config, h.themes?.darkMode];
     return [h.states[id], h.entities, h.devices, h.language, h.locale, h.config, h.themes?.darkMode, this._wx, this._minute];
   }
 
@@ -2052,16 +2075,27 @@ class RainCard extends HTMLElement {
     if (html !== this._html) {
       this._html = html;
       morph(this.shadowRoot, html);
+      // Measured again only when the markup changed; a new width or the web font is caught by the observer.
+      this._fitPill();
     }
-    this._fitPill();
     this._syncWeather();
   }
 
-  // The status pill stays right after the title only while the whole title and the pill's whole label fit on that
+  // The status pill stays at the right end of the title's row only while the whole title and the pill's whole label fit on that
   // row; otherwise it takes a line of its own under the subtitle (.below), and when even then the title, the subtitle
   // and the pill would not fit above the banner's lawn strip, it keeps its dot alone (.pill-dot). Measured in the
   // real fonts, so that every language and title length gets its own answer.
   _fitPill() {
+    // Home Assistant's <ha-card> (a Lit element) shows its content only from its first update, a microtask after it
+    // is connected: measured before, everything is 0 px wide and the pill lands on the wrong line. Fitted then.
+    const haCard = this.shadowRoot?.querySelector?.("ha-card");
+    if (haCard && haCard.hasUpdated === false) {
+      this._pillWait ??= (haCard.updateComplete?.then ? haCard.updateComplete : new Promise((r) => requestAnimationFrame(r))).then(() => {
+        this._pillWait = null;
+        this._fitPill();
+      });
+      return;
+    }
     for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
       const row = t.querySelector(":scope > .trow");
       const chip = row?.querySelector(":scope > .chip");
