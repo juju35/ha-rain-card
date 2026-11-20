@@ -2,6 +2,9 @@
 
 ## 1.2.2 - 2026-11-20
 
+### Fixes
+- Status pill: it now sits at the right end of the title's row (aligned with the title, as on the other ha-* cards) instead of right after the title; it still drops under the subtitle, then keeps its dot, when the title and the pill do not fit.
+
 ### Performance
 - Automatic source: the scan of every state (sorted by entity id) to find the Météo-France Next rain sensor or a weather entity now runs once per registry change instead of up to three times on every state change of the instance; the entity found is kept while it still qualifies.
 

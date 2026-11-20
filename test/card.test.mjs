@@ -491,3 +491,9 @@ test("no fixed width decides the pill's place: only the dot-only rule at 200 px 
   assert.match(css, /\.titles\.below \.trow \{ display: contents; \}/);
   assert.match(css, /\.titles\.pill-dot \.chip-text \{ display: none; \}/);
 });
+
+test("the status pill sits at the right end of the title's row, and at the start of its own line below", () => {
+  const css = html(newCard());
+  assert.match(css, /\.trow \.chip \{ flex: none; max-width: none; margin-left: auto; \}/);
+  assert.match(css, /\.titles\.below \.chip \{[^}]*margin-left: 0;/);
+});

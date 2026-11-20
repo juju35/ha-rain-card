@@ -1674,18 +1674,18 @@ const BASE_STYLE = `
   .chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 0; }
   .titles { flex: 1 1 0; min-width: 5ch; }
-  /* The status pill right after the title, centred on it, while the title stays whole and the pill's whole label fits
-     beside it; otherwise (measured by the card, see _fitPill) the pill on its own line under a one-line subtitle, and
+  /* The status pill at the right end of the title's row, centred on it, while the title stays whole and the pill's whole
+     label fits beside it; otherwise (measured by the card, see _fitPill) the pill on its own line under a one-line subtitle, and
      if even that would not fit in the header, its dot alone (the label stays in title and aria-label). */
   .titles { display: flex; flex-direction: column; }
   .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
   .trow .name { flex: 0 1 auto; min-width: 0; }
-  .trow .chip { flex: none; max-width: none; }
+  .trow .chip { flex: none; max-width: none; margin-left: auto; }
   .titles.below { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; }
   .titles.below .trow { display: contents; }
   .titles.below .name { max-width: 100%; }
   .titles.below > .sub { justify-self: stretch; }
-  .titles.below .chip { grid-row: 3; margin-top: 2px; max-width: 100%; }
+  .titles.below .chip { grid-row: 3; margin-top: 2px; margin-left: 0; max-width: 100%; }
   .titles.pill-dot .chip { padding: 4px; }
   .titles.pill-dot .chip-text { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -2079,7 +2079,7 @@ class RainCard extends HTMLElement {
     this._syncWeather();
   }
 
-  // The status pill stays right after the title only while the whole title and the pill's whole label fit on that
+  // The status pill stays at the right end of the title's row only while the whole title and the pill's whole label fit on that
   // row; otherwise it takes a line of its own under the subtitle (.below), and when even then the title, the subtitle
   // and the pill would not fit above the banner's lawn strip, it keeps its dot alone (.pill-dot). Measured in the
   // real fonts, so that every language and title length gets its own answer.
