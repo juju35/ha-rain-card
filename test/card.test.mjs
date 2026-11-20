@@ -172,6 +172,33 @@ test("the Météo-France next rain sensor is found first, then a weather entity"
   assert.deepEqual({ ...rc.findSource({ ...hass, states: {} }, {}) }, { error: "no_source" });
 });
 
+test("the automatic source is not scanned again for a state change elsewhere, but is when the source goes", () => {
+  const hass = makeHass();
+  // A spy state: the scan sorts every state by entity id, the cached path never reads it.
+  let reads = 0;
+  const spy = {
+    get entity_id() {
+      reads++;
+      return "light.spy";
+    },
+    state: "on",
+    attributes: {},
+  };
+  const withSpy = { ...hass, states: { ...hass.states, "light.spy": spy } };
+  assert.deepEqual({ ...rc.findSource(withSpy, {}) }, { id: MF });
+  assert.ok(reads > 0);
+  reads = 0;
+  // Another entity changes: same registry, same number of states, the cached sensor still qualifies.
+  const next = { ...withSpy, states: { ...withSpy.states } };
+  assert.deepEqual({ ...rc.findSource(next, {}) }, { id: MF });
+  assert.equal(reads, 0);
+  // The sensor is gone: a new scan finds the weather entity.
+  assert.deepEqual({ ...rc.findSource({ ...hass, states: { [WX]: states[WX] } }, {}) }, { id: WX });
+  // The registry changes (the sensor hidden): scanned again.
+  const hidden = { ...hass, entities: { ...hass.entities, [MF]: { ...hass.entities[MF], hidden: true } } };
+  assert.deepEqual({ ...rc.findSource(hidden, {}) }, { id: WX });
+});
+
 test("the location is the option, the Météo-France city, the weather entity's name or Home Assistant's", () => {
   const hass = makeHass();
   assert.equal(rc.cityOf("Météo-France forecast for city Lyon - Rhône (69) - FR"), "Lyon");

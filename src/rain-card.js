@@ -1557,13 +1557,35 @@ const HOURLY = 2; // WeatherEntityFeature.FORECAST_HOURLY
 
 // The forecast entity: the `entity` option, else the first Météo-France next rain sensor, else the first weather
 // entity with an hourly forecast (or a forecast attribute), in the order of the entity ids.
-const findSource = (hass, config) => {
-  if (config.entity) return hass.states[config.entity] ? { id: config.entity } : { error: "unknown_entity" };
+const isWx = (s) => s?.entity_id.startsWith("weather.") && (s.attributes?.supported_features & HOURLY || Array.isArray(s.attributes?.forecast));
+
+const scanSource = (hass) => {
   const all = Object.values(hass.states || {}).sort((a, b) => a.entity_id.localeCompare(b.entity_id));
   const mf = all.find((s) => isMf(s, hass) && !hass.entities?.[s.entity_id]?.hidden);
   if (mf) return { id: mf.entity_id };
-  const wx = all.find((s) => s.entity_id.startsWith("weather.") && (s.attributes?.supported_features & HOURLY || Array.isArray(s.attributes?.forecast)));
+  const wx = all.find(isWx);
   return wx ? { id: wx.entity_id } : { error: "no_source" };
+};
+
+// The automatic scan sorts every state of the instance: it is kept while the entity registry and the number of
+// states stay the same and the entity found still qualifies, so that a state change elsewhere costs no new scan.
+let sourceCache = null;
+const findSource = (hass, config) => {
+  if (config.entity) return hass.states[config.entity] ? { id: config.entity } : { error: "unknown_entity" };
+  const count = Object.keys(hass.states || {}).length;
+  const c = sourceCache;
+  if (c && c.hass === hass) return c.result;
+  if (c && c.entities === hass.entities && c.count === count) {
+    const s = c.result.id && hass.states[c.result.id];
+    const still = c.result.id ? (c.result.id.startsWith("weather.") ? isWx(s) : isMf(s, hass)) : true;
+    if (still) {
+      c.hass = hass;
+      return c.result;
+    }
+  }
+  const result = scanSource(hass);
+  sourceCache = { hass, entities: hass.entities, count, result };
+  return result;
 };
 
 // The city of a Météo-France device ("Météo-France forecast for city Lyon - Rhône (69) - FR" → "Lyon").
