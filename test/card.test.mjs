@@ -497,3 +497,22 @@ test("the status pill sits at the right end of the title's row, and at the start
   assert.match(css, /\.trow \.chip \{ flex: none; max-width: none; margin-left: auto; \}/);
   assert.match(css, /\.titles\.below \.chip \{[^}]*margin-left: 0;/);
 });
+
+test("the error card is not rebuilt for unrelated state changes, and goes once the entity appears", () => {
+  const hass = makeHass();
+  const states = { ...hass.states };
+  delete states["sensor.nope"];
+  const card = newCard({ entity: "sensor.nope" }, { ...hass, states });
+  let renders = 0;
+  const render = card._render.bind(card);
+  card._render = () => {
+    renders++;
+    return render();
+  };
+  card.hass = { ...hass, states: { ...states, "light.kitchen": { entity_id: "light.kitchen", state: "on" } } };
+  card.hass = { ...hass, states: { ...states, "light.kitchen": { entity_id: "light.kitchen", state: "off" } } };
+  assert.equal(renders, 0);
+  card.hass = { ...hass, states: { ...states, "sensor.nope": { ...hass.states[Object.keys(hass.states)[0]], entity_id: "sensor.nope" } } };
+  assert.equal(renders, 1);
+  assert.doesNotMatch(text(card), /Entity not found/);
+});

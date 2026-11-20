@@ -1998,8 +1998,9 @@ class RainCard extends HTMLElement {
   _deps() {
     const h = this._hass;
     if (!h || !this._config) return null;
-    const { id } = findSource(h, this._config);
-    if (!id) return null;
+    const { id, error } = findSource(h, this._config);
+    // No source: the error card only changes with the error (a source that appears ends it) and the language.
+    if (!id) return [error, h.language, h.locale, h.config, h.themes?.darkMode];
     return [h.states[id], h.entities, h.devices, h.language, h.locale, h.config, h.themes?.darkMode, this._wx, this._minute];
   }
 
@@ -2074,8 +2075,9 @@ class RainCard extends HTMLElement {
     if (html !== this._html) {
       this._html = html;
       morph(this.shadowRoot, html);
+      // Measured again only when the markup changed; a new width or the web font is caught by the observer.
+      this._fitPill();
     }
-    this._fitPill();
     this._syncWeather();
   }
 
@@ -2084,6 +2086,16 @@ class RainCard extends HTMLElement {
   // and the pill would not fit above the banner's lawn strip, it keeps its dot alone (.pill-dot). Measured in the
   // real fonts, so that every language and title length gets its own answer.
   _fitPill() {
+    // Home Assistant's <ha-card> (a Lit element) shows its content only from its first update, a microtask after it
+    // is connected: measured before, everything is 0 px wide and the pill lands on the wrong line. Fitted then.
+    const haCard = this.shadowRoot?.querySelector?.("ha-card");
+    if (haCard && haCard.hasUpdated === false) {
+      this._pillWait ??= (haCard.updateComplete?.then ? haCard.updateComplete : new Promise((r) => requestAnimationFrame(r))).then(() => {
+        this._pillWait = null;
+        this._fitPill();
+      });
+      return;
+    }
     for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
       const row = t.querySelector(":scope > .trow");
       const chip = row?.querySelector(":scope > .chip");

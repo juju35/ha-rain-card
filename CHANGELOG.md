@@ -7,8 +7,11 @@
 
 ### Performance
 - Automatic source: the scan of every state (sorted by entity id) to find the Météo-France Next rain sensor or a weather entity now runs once per registry change instead of up to three times on every state change of the instance; the entity found is kept while it still qualifies.
+- Without a source (unknown entity, nothing found), the error card is no longer rebuilt on every state change of the instance; it goes as soon as the entity appears.
+- The status pill is measured again only when the card's markup changed (a new width or the web font is still caught by the observer), and only once Home Assistant's `<ha-card>` has rendered, so it is in its place from the first frame.
 
 ### Maintenance
+- CI: the npm cache is used by the build job.
 - The commitlint config is an ES module (the package is `"type": "module"`): the local `commit-msg` hook no longer crashes.
 
 ## 1.2.1 - 2026-11-18
