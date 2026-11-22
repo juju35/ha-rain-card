@@ -2535,7 +2535,7 @@ for (const card of [
   },
   { type: "rain-mini-card", name: "Rain Mini Card", description: "Rain in the next hour on one line, with a compact ribbon and a detail button." },
 ]) {
-  if (!window.customCards.some((c) => c.type === card.type)) window.customCards.push({ ...card, preview: true, documentationURL: "https://github.com/juju35/ha-rain-card" });
+  if (!window.customCards.some((c) => c.type === card.type)) window.customCards.push({ ...card, preview: false, documentationURL: "https://github.com/juju35/ha-rain-card" });
 }
 
 console.info(`%c RAIN-CARD %c v${VERSION} `, "color: white; background: #1e88e5; font-weight: 700;", "color: #1e88e5; background: white; font-weight: 700;");
