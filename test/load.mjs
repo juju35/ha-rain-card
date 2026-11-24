@@ -1,9 +1,8 @@
-// Evaluates src/rain-card.js (a classic script, bundled as is by scripts/build.mjs) in a sandbox with minimal DOM
+// Evaluates the bundled card source (test/source.mjs) (a classic script, bundled as is by scripts/build.mjs) in a sandbox with minimal DOM
 // stand-ins and returns the names the tests need. No dependency, no browser.
-import { readFileSync } from "node:fs";
 import vm from "node:vm";
+import { source } from "./source.mjs";
 
-const source = readFileSync(new URL("../src/rain-card.js", import.meta.url), "utf8");
 
 // Shadow root stand-in: keeps the HTML it is given (no DOM to patch: the card sets its markup as is).
 const fakeRoot = () => ({
