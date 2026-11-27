@@ -6,7 +6,7 @@ export const BASE_STYLE = `
   :host { --rc-accent: #1e88e5; --rc-ok: var(--success-color, #43a047); --rc-soon: var(--warning-color, #ffa600);
           --rc-rain: #1e88e5; --rc-stop: #00acc1;
           /* Shades of the bars, the same in light and dark themes: pale for light rain, deep for heavy rain. */
-          --rc-light: #90caf9; --rc-moderate: #42a5f5; --rc-heavy: #1976d2; --rc-crit: var(--error-color, #db4437); --rc-idle: var(--disabled-text-color, #9e9e9e); }
+          --rc-light: #90caf9; --rc-moderate: #42a5f5; --rc-heavy: #1976d2; --rc-crit: var(--error-color, #db4437); --rc-idle: var(--secondary-text-color, #9e9e9e); }
   ha-card { overflow: hidden; container: rc-card / inline-size; }
   /* A size container has no width of its own: this zero-height grid gives the card a natural width without a minimum. */
   :host { display: block; min-width: 0; --rc-natural-width: 360px; }
